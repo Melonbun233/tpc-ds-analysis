@@ -1,0 +1,48 @@
+{
+    "total": 2664, 
+    "sub": {
+        "Sort": 228, 
+        "Gather Merge": 88, 
+        "Materialize": 12, 
+        "Join": {
+            "Full": {
+                "Merge Join": 2
+            }, 
+            "Anti": {
+                "Hash Join": 5
+            }, 
+            "Inner": {
+                "Hash Join": 274, 
+                "Merge Join": 10
+            }, 
+            "Semi": {
+                "Hash Join": 16
+            }, 
+            "Left": {
+                "Hash Join": 6, 
+                "Merge Join": 2
+            }
+        }, 
+        "Group": 7, 
+        "Scan": {
+            "Subquery Scan": 40, 
+            "Bitmap Index Scan": 9, 
+            "Index Only Scan": 16, 
+            "CTE Scan": 98, 
+            "Seq Scan": 505, 
+            "Bitmap Heap Scan": 9, 
+            "Index Scan": 206
+        }, 
+        "Gather": 86, 
+        "Nested Loop": 271, 
+        "Filter": 423, 
+        "SetOp": 7, 
+        "Limit": 84, 
+        "WindowAgg": 26, 
+        "Aggregate": 314, 
+        "Hash": 301, 
+        "Unique": 10, 
+        "Append": 29, 
+        "Result": 3
+    }
+}
