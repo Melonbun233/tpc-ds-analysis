@@ -1,261 +1,257 @@
-                                       QUERY PLAN                                        
------------------------------------------------------------------------------------------
- [                                                                                      +
-   {                                                                                    +
-     "Plan": {                                                                          +
-       "Node Type": "Sort",                                                             +
-       "Parallel Aware": false,                                                         +
-       "Startup Cost": 589500.35,                                                       +
-       "Total Cost": 589500.38,                                                         +
-       "Plan Rows": 13,                                                                 +
-       "Plan Width": 228,                                                               +
-       "Sort Key": ["wswscs.d_week_seq"],                                               +
-       "Plans": [                                                                       +
-         {                                                                              +
-           "Node Type": "Append",                                                       +
-           "Parent Relationship": "InitPlan",                                           +
-           "Subplan Name": "CTE wscs",                                                  +
-           "Parallel Aware": false,                                                     +
-           "Startup Cost": 0.00,                                                        +
-           "Total Cost": 88588.23,                                                      +
-           "Plan Rows": 2161082,                                                        +
-           "Plan Width": 10,                                                            +
-           "Plans": [                                                                   +
-             {                                                                          +
-               "Node Type": "Seq Scan",                                                 +
-               "Parent Relationship": "Member",                                         +
-               "Parallel Aware": false,                                                 +
-               "Relation Name": "web_sales",                                            +
-               "Alias": "web_sales",                                                    +
-               "Startup Cost": 0.00,                                                    +
-               "Total Cost": 25960.84,                                                  +
-               "Plan Rows": 719384,                                                     +
-               "Plan Width": 10                                                         +
-             },                                                                         +
-             {                                                                          +
-               "Node Type": "Seq Scan",                                                 +
-               "Parent Relationship": "Member",                                         +
-               "Parallel Aware": false,                                                 +
-               "Relation Name": "catalog_sales",                                        +
-               "Alias": "catalog_sales",                                                +
-               "Startup Cost": 0.00,                                                    +
-               "Total Cost": 51821.98,                                                  +
-               "Plan Rows": 1441698,                                                    +
-               "Plan Width": 10                                                         +
-             }                                                                          +
-           ]                                                                            +
-         },                                                                             +
-         {                                                                              +
-           "Node Type": "Aggregate",                                                    +
-           "Strategy": "Sorted",                                                        +
-           "Partial Mode": "Simple",                                                    +
-           "Parent Relationship": "InitPlan",                                           +
-           "Subplan Name": "CTE wswscs",                                                +
-           "Parallel Aware": false,                                                     +
-           "Startup Cost": 408927.14,                                                   +
-           "Total Cost": 495657.00,                                                     +
-           "Plan Rows": 10421,                                                          +
-           "Plan Width": 228,                                                           +
-           "Group Key": ["date_dim_2.d_week_seq"],                                      +
-           "Plans": [                                                                   +
-             {                                                                          +
-               "Node Type": "Sort",                                                     +
-               "Parent Relationship": "Outer",                                          +
-               "Parallel Aware": false,                                                 +
-               "Startup Cost": 408927.14,                                               +
-               "Total Cost": 414329.85,                                                 +
-               "Plan Rows": 2161082,                                                    +
-               "Plan Width": 28,                                                        +
-               "Sort Key": ["date_dim_2.d_week_seq"],                                   +
-               "Plans": [                                                               +
-                 {                                                                      +
-                   "Node Type": "Hash Join",                                            +
-                   "Parent Relationship": "Outer",                                      +
-                   "Parallel Aware": false,                                             +
-                   "Join Type": "Inner",                                                +
-                   "Startup Cost": 3477.60,                                             +
-                   "Total Cost": 78127.42,                                              +
-                   "Plan Rows": 2161082,                                                +
-                   "Plan Width": 28,                                                    +
-                   "Inner Unique": true,                                                +
-                   "Hash Cond": "(wscs.sold_date_sk = date_dim_2.d_date_sk)",           +
-                   "Plans": [                                                           +
-                     {                                                                  +
-                       "Node Type": "CTE Scan",                                         +
-                       "Parent Relationship": "Outer",                                  +
-                       "Parallel Aware": false,                                         +
-                       "CTE Name": "wscs",                                              +
-                       "Alias": "wscs",                                                 +
-                       "Startup Cost": 0.00,                                            +
-                       "Total Cost": 43221.64,                                          +
-                       "Plan Rows": 2161082,                                            +
-                       "Plan Width": 18                                                 +
-                     },                                                                 +
-                     {                                                                  +
-                       "Node Type": "Hash",                                             +
-                       "Parent Relationship": "Inner",                                  +
-                       "Parallel Aware": false,                                         +
-                       "Startup Cost": 2135.49,                                         +
-                       "Total Cost": 2135.49,                                           +
-                       "Plan Rows": 73049,                                              +
-                       "Plan Width": 18,                                                +
-                       "Plans": [                                                       +
-                         {                                                              +
-                           "Node Type": "Seq Scan",                                     +
-                           "Parent Relationship": "Outer",                              +
-                           "Parallel Aware": false,                                     +
-                           "Relation Name": "date_dim",                                 +
-                           "Alias": "date_dim_2",                                       +
-                           "Startup Cost": 0.00,                                        +
-                           "Total Cost": 2135.49,                                       +
-                           "Plan Rows": 73049,                                          +
-                           "Plan Width": 18                                             +
-                         }                                                              +
-                       ]                                                                +
-                     }                                                                  +
-                   ]                                                                    +
-                 }                                                                      +
-               ]                                                                        +
-             }                                                                          +
-           ]                                                                            +
-         },                                                                             +
-         {                                                                              +
-           "Node Type": "Hash Join",                                                    +
-           "Parent Relationship": "Outer",                                              +
-           "Parallel Aware": false,                                                     +
-           "Join Type": "Inner",                                                        +
-           "Startup Cost": 5006.79,                                                     +
-           "Total Cost": 5254.88,                                                       +
-           "Plan Rows": 13,                                                             +
-           "Plan Width": 228,                                                           +
-           "Inner Unique": false,                                                       +
-           "Hash Cond": "(wswscs.d_week_seq = date_dim.d_week_seq)",                    +
-           "Plans": [                                                                   +
-             {                                                                          +
-               "Node Type": "CTE Scan",                                                 +
-               "Parent Relationship": "Outer",                                          +
-               "Parallel Aware": false,                                                 +
-               "CTE Name": "wswscs",                                                    +
-               "Alias": "wswscs",                                                       +
-               "Startup Cost": 0.00,                                                    +
-               "Total Cost": 208.42,                                                    +
-               "Plan Rows": 10421,                                                      +
-               "Plan Width": 228                                                        +
-             },                                                                         +
-             {                                                                          +
-               "Node Type": "Hash",                                                     +
-               "Parent Relationship": "Inner",                                          +
-               "Parallel Aware": false,                                                 +
-               "Startup Cost": 5006.63,                                                 +
-               "Total Cost": 5006.63,                                                   +
-               "Plan Rows": 13,                                                         +
-               "Plan Width": 232,                                                       +
-               "Plans": [                                                               +
-                 {                                                                      +
-                   "Node Type": "Merge Join",                                           +
-                   "Parent Relationship": "Outer",                                      +
-                   "Parallel Aware": false,                                             +
-                   "Join Type": "Inner",                                                +
-                   "Startup Cost": 5001.04,                                             +
-                   "Total Cost": 5006.63,                                               +
-                   "Plan Rows": 13,                                                     +
-                   "Plan Width": 232,                                                   +
-                   "Inner Unique": false,                                               +
-                   "Merge Cond": "(((wswscs_1.d_week_seq - 53)) = date_dim.d_week_seq)",+
-                   "Plans": [                                                           +
-                     {                                                                  +
-                       "Node Type": "Sort",                                             +
-                       "Parent Relationship": "Outer",                                  +
-                       "Parallel Aware": false,                                         +
-                       "Startup Cost": 2667.44,                                         +
-                       "Total Cost": 2668.35,                                           +
-                       "Plan Rows": 364,                                                +
-                       "Plan Width": 228,                                               +
-                       "Sort Key": ["((wswscs_1.d_week_seq - 53))"],                    +
-                       "Plans": [                                                       +
-                         {                                                              +
-                           "Node Type": "Hash Join",                                    +
-                           "Parent Relationship": "Outer",                              +
-                           "Parallel Aware": false,                                     +
-                           "Join Type": "Inner",                                        +
-                           "Startup Cost": 2322.66,                                     +
-                           "Total Cost": 2651.96,                                       +
-                           "Plan Rows": 364,                                            +
-                           "Plan Width": 228,                                           +
-                           "Inner Unique": false,                                       +
-                           "Hash Cond": "(wswscs_1.d_week_seq = date_dim_1.d_week_seq)",+
-                           "Plans": [                                                   +
-                             {                                                          +
-                               "Node Type": "CTE Scan",                                 +
-                               "Parent Relationship": "Outer",                          +
-                               "Parallel Aware": false,                                 +
-                               "CTE Name": "wswscs",                                    +
-                               "Alias": "wswscs_1",                                     +
-                               "Startup Cost": 0.00,                                    +
-                               "Total Cost": 208.42,                                    +
-                               "Plan Rows": 10421,                                      +
-                               "Plan Width": 228                                        +
-                             },                                                         +
-                             {                                                          +
-                               "Node Type": "Hash",                                     +
-                               "Parent Relationship": "Inner",                          +
-                               "Parallel Aware": false,                                 +
-                               "Startup Cost": 2318.11,                                 +
-                               "Total Cost": 2318.11,                                   +
-                               "Plan Rows": 364,                                        +
-                               "Plan Width": 4,                                         +
-                               "Plans": [                                               +
-                                 {                                                      +
-                                   "Node Type": "Seq Scan",                             +
-                                   "Parent Relationship": "Outer",                      +
-                                   "Parallel Aware": false,                             +
-                                   "Relation Name": "date_dim",                         +
-                                   "Alias": "date_dim_1",                               +
-                                   "Startup Cost": 0.00,                                +
-                                   "Total Cost": 2318.11,                               +
-                                   "Plan Rows": 364,                                    +
-                                   "Plan Width": 4,                                     +
-                                   "Filter": "(d_year = 2002)"                          +
-                                 }                                                      +
-                               ]                                                        +
-                             }                                                          +
-                           ]                                                            +
-                         }                                                              +
-                       ]                                                                +
-                     },                                                                 +
-                     {                                                                  +
-                       "Node Type": "Sort",                                             +
-                       "Parent Relationship": "Inner",                                  +
-                       "Parallel Aware": false,                                         +
-                       "Startup Cost": 2333.60,                                         +
-                       "Total Cost": 2334.51,                                           +
-                       "Plan Rows": 364,                                                +
-                       "Plan Width": 4,                                                 +
-                       "Sort Key": ["date_dim.d_week_seq"],                             +
-                       "Plans": [                                                       +
-                         {                                                              +
-                           "Node Type": "Seq Scan",                                     +
-                           "Parent Relationship": "Outer",                              +
-                           "Parallel Aware": false,                                     +
-                           "Relation Name": "date_dim",                                 +
-                           "Alias": "date_dim",                                         +
-                           "Startup Cost": 0.00,                                        +
-                           "Total Cost": 2318.11,                                       +
-                           "Plan Rows": 364,                                            +
-                           "Plan Width": 4,                                             +
-                           "Filter": "(d_year = 2001)"                                  +
-                         }                                                              +
-                       ]                                                                +
-                     }                                                                  +
-                   ]                                                                    +
-                 }                                                                      +
-               ]                                                                        +
-             }                                                                          +
-           ]                                                                            +
-         }                                                                              +
-       ]                                                                                +
-     }                                                                                  +
-   }                                                                                    +
- ]
-(1 row)
-
+[
+  {
+    "Plan": {
+      "Node Type": "Sort",
+      "Parallel Aware": false,
+      "Startup Cost": 589500.35,
+      "Total Cost": 589500.38,
+      "Plan Rows": 13,
+      "Plan Width": 228,
+      "Sort Key": ["wswscs.d_week_seq"],
+      "Plans": [
+        {
+          "Node Type": "Append",
+          "Parent Relationship": "InitPlan",
+          "Subplan Name": "CTE wscs",
+          "Parallel Aware": false,
+          "Startup Cost": 0.00,
+          "Total Cost": 88588.23,
+          "Plan Rows": 2161082,
+          "Plan Width": 10,
+          "Plans": [
+            {
+              "Node Type": "Seq Scan",
+              "Parent Relationship": "Member",
+              "Parallel Aware": false,
+              "Relation Name": "web_sales",
+              "Alias": "web_sales",
+              "Startup Cost": 0.00,
+              "Total Cost": 25960.84,
+              "Plan Rows": 719384,
+              "Plan Width": 10
+            },
+            {
+              "Node Type": "Seq Scan",
+              "Parent Relationship": "Member",
+              "Parallel Aware": false,
+              "Relation Name": "catalog_sales",
+              "Alias": "catalog_sales",
+              "Startup Cost": 0.00,
+              "Total Cost": 51821.98,
+              "Plan Rows": 1441698,
+              "Plan Width": 10
+            }
+          ]
+        },
+        {
+          "Node Type": "Aggregate",
+          "Strategy": "Sorted",
+          "Partial Mode": "Simple",
+          "Parent Relationship": "InitPlan",
+          "Subplan Name": "CTE wswscs",
+          "Parallel Aware": false,
+          "Startup Cost": 408927.14,
+          "Total Cost": 495657.00,
+          "Plan Rows": 10421,
+          "Plan Width": 228,
+          "Group Key": ["date_dim_2.d_week_seq"],
+          "Plans": [
+            {
+              "Node Type": "Sort",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Startup Cost": 408927.14,
+              "Total Cost": 414329.85,
+              "Plan Rows": 2161082,
+              "Plan Width": 28,
+              "Sort Key": ["date_dim_2.d_week_seq"],
+              "Plans": [
+                {
+                  "Node Type": "Hash Join",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Join Type": "Inner",
+                  "Startup Cost": 3477.60,
+                  "Total Cost": 78127.42,
+                  "Plan Rows": 2161082,
+                  "Plan Width": 28,
+                  "Inner Unique": true,
+                  "Hash Cond": "(wscs.sold_date_sk = date_dim_2.d_date_sk)",
+                  "Plans": [
+                    {
+                      "Node Type": "CTE Scan",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "CTE Name": "wscs",
+                      "Alias": "wscs",
+                      "Startup Cost": 0.00,
+                      "Total Cost": 43221.64,
+                      "Plan Rows": 2161082,
+                      "Plan Width": 18
+                    },
+                    {
+                      "Node Type": "Hash",
+                      "Parent Relationship": "Inner",
+                      "Parallel Aware": false,
+                      "Startup Cost": 2135.49,
+                      "Total Cost": 2135.49,
+                      "Plan Rows": 73049,
+                      "Plan Width": 18,
+                      "Plans": [
+                        {
+                          "Node Type": "Seq Scan",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Relation Name": "date_dim",
+                          "Alias": "date_dim_2",
+                          "Startup Cost": 0.00,
+                          "Total Cost": 2135.49,
+                          "Plan Rows": 73049,
+                          "Plan Width": 18
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Node Type": "Hash Join",
+          "Parent Relationship": "Outer",
+          "Parallel Aware": false,
+          "Join Type": "Inner",
+          "Startup Cost": 5006.79,
+          "Total Cost": 5254.88,
+          "Plan Rows": 13,
+          "Plan Width": 228,
+          "Inner Unique": false,
+          "Hash Cond": "(wswscs.d_week_seq = date_dim.d_week_seq)",
+          "Plans": [
+            {
+              "Node Type": "CTE Scan",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "CTE Name": "wswscs",
+              "Alias": "wswscs",
+              "Startup Cost": 0.00,
+              "Total Cost": 208.42,
+              "Plan Rows": 10421,
+              "Plan Width": 228
+            },
+            {
+              "Node Type": "Hash",
+              "Parent Relationship": "Inner",
+              "Parallel Aware": false,
+              "Startup Cost": 5006.63,
+              "Total Cost": 5006.63,
+              "Plan Rows": 13,
+              "Plan Width": 232,
+              "Plans": [
+                {
+                  "Node Type": "Merge Join",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Join Type": "Inner",
+                  "Startup Cost": 5001.04,
+                  "Total Cost": 5006.63,
+                  "Plan Rows": 13,
+                  "Plan Width": 232,
+                  "Inner Unique": false,
+                  "Merge Cond": "(((wswscs_1.d_week_seq - 53)) = date_dim.d_week_seq)",
+                  "Plans": [
+                    {
+                      "Node Type": "Sort",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "Startup Cost": 2667.44,
+                      "Total Cost": 2668.35,
+                      "Plan Rows": 364,
+                      "Plan Width": 228,
+                      "Sort Key": ["((wswscs_1.d_week_seq - 53))"],
+                      "Plans": [
+                        {
+                          "Node Type": "Hash Join",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Join Type": "Inner",
+                          "Startup Cost": 2322.66,
+                          "Total Cost": 2651.96,
+                          "Plan Rows": 364,
+                          "Plan Width": 228,
+                          "Inner Unique": false,
+                          "Hash Cond": "(wswscs_1.d_week_seq = date_dim_1.d_week_seq)",
+                          "Plans": [
+                            {
+                              "Node Type": "CTE Scan",
+                              "Parent Relationship": "Outer",
+                              "Parallel Aware": false,
+                              "CTE Name": "wswscs",
+                              "Alias": "wswscs_1",
+                              "Startup Cost": 0.00,
+                              "Total Cost": 208.42,
+                              "Plan Rows": 10421,
+                              "Plan Width": 228
+                            },
+                            {
+                              "Node Type": "Hash",
+                              "Parent Relationship": "Inner",
+                              "Parallel Aware": false,
+                              "Startup Cost": 2318.11,
+                              "Total Cost": 2318.11,
+                              "Plan Rows": 364,
+                              "Plan Width": 4,
+                              "Plans": [
+                                {
+                                  "Node Type": "Seq Scan",
+                                  "Parent Relationship": "Outer",
+                                  "Parallel Aware": false,
+                                  "Relation Name": "date_dim",
+                                  "Alias": "date_dim_1",
+                                  "Startup Cost": 0.00,
+                                  "Total Cost": 2318.11,
+                                  "Plan Rows": 364,
+                                  "Plan Width": 4,
+                                  "Filter": "(d_year = 2002)"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "Node Type": "Sort",
+                      "Parent Relationship": "Inner",
+                      "Parallel Aware": false,
+                      "Startup Cost": 2333.60,
+                      "Total Cost": 2334.51,
+                      "Plan Rows": 364,
+                      "Plan Width": 4,
+                      "Sort Key": ["date_dim.d_week_seq"],
+                      "Plans": [
+                        {
+                          "Node Type": "Seq Scan",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Relation Name": "date_dim",
+                          "Alias": "date_dim",
+                          "Startup Cost": 0.00,
+                          "Total Cost": 2318.11,
+                          "Plan Rows": 364,
+                          "Plan Width": 4,
+                          "Filter": "(d_year = 2001)"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

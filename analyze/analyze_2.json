@@ -1,233 +1,229 @@
-                                            QUERY PLAN                                             
----------------------------------------------------------------------------------------------------
- [                                                                                                +
-   {                                                                                              +
-     "Plan": {                                                                                    +
-       "Node Type": "Limit",                                                                      +
-       "Parallel Aware": false,                                                                   +
-       "Startup Cost": 8813.16,                                                                   +
-       "Total Cost": 8813.41,                                                                     +
-       "Plan Rows": 100,                                                                          +
-       "Plan Width": 91,                                                                          +
-       "Actual Startup Time": 126.658,                                                            +
-       "Actual Total Time": 126.663,                                                              +
-       "Actual Rows": 22,                                                                         +
-       "Actual Loops": 1,                                                                         +
-       "Plans": [                                                                                 +
-         {                                                                                        +
-           "Node Type": "Sort",                                                                   +
-           "Parent Relationship": "Outer",                                                        +
-           "Parallel Aware": false,                                                               +
-           "Startup Cost": 8813.16,                                                               +
-           "Total Cost": 8813.68,                                                                 +
-           "Plan Rows": 206,                                                                      +
-           "Plan Width": 91,                                                                      +
-           "Actual Startup Time": 126.657,                                                        +
-           "Actual Total Time": 126.659,                                                          +
-           "Actual Rows": 22,                                                                     +
-           "Actual Loops": 1,                                                                     +
-           "Sort Key": ["dt.d_year", "(sum(store_sales.ss_sales_price)) DESC", "item.i_brand_id"],+
-           "Sort Method": "quicksort",                                                            +
-           "Sort Space Used": 28,                                                                 +
-           "Sort Space Type": "Memory",                                                           +
-           "Plans": [                                                                             +
-             {                                                                                    +
-               "Node Type": "Aggregate",                                                          +
-               "Strategy": "Sorted",                                                              +
-               "Partial Mode": "Finalize",                                                        +
-               "Parent Relationship": "Outer",                                                    +
-               "Parallel Aware": false,                                                           +
-               "Startup Cost": 8784.56,                                                           +
-               "Total Cost": 8805.29,                                                             +
-               "Plan Rows": 206,                                                                  +
-               "Plan Width": 91,                                                                  +
-               "Actual Startup Time": 126.474,                                                    +
-               "Actual Total Time": 126.608,                                                      +
-               "Actual Rows": 22,                                                                 +
-               "Actual Loops": 1,                                                                 +
-               "Group Key": ["dt.d_year", "item.i_brand", "item.i_brand_id"],                     +
-               "Plans": [                                                                         +
-                 {                                                                                +
-                   "Node Type": "Gather Merge",                                                   +
-                   "Parent Relationship": "Outer",                                                +
-                   "Parallel Aware": false,                                                       +
-                   "Startup Cost": 8784.56,                                                       +
-                   "Total Cost": 8801.20,                                                         +
-                   "Plan Rows": 121,                                                              +
-                   "Plan Width": 91,                                                              +
-                   "Actual Startup Time": 126.456,                                                +
-                   "Actual Total Time": 128.472,                                                  +
-                   "Actual Rows": 22,                                                             +
-                   "Actual Loops": 1,                                                             +
-                   "Workers Planned": 1,                                                          +
-                   "Workers Launched": 1,                                                         +
-                   "Plans": [                                                                     +
-                     {                                                                            +
-                       "Node Type": "Aggregate",                                                  +
-                       "Strategy": "Sorted",                                                      +
-                       "Partial Mode": "Partial",                                                 +
-                       "Parent Relationship": "Outer",                                            +
-                       "Parallel Aware": false,                                                   +
-                       "Startup Cost": 7784.55,                                                   +
-                       "Total Cost": 7787.58,                                                     +
-                       "Plan Rows": 121,                                                          +
-                       "Plan Width": 91,                                                          +
-                       "Actual Startup Time": 121.106,                                            +
-                       "Actual Total Time": 121.186,                                              +
-                       "Actual Rows": 11,                                                         +
-                       "Actual Loops": 2,                                                         +
-                       "Group Key": ["dt.d_year", "item.i_brand", "item.i_brand_id"],             +
-                       "Plans": [                                                                 +
-                         {                                                                        +
-                           "Node Type": "Sort",                                                   +
-                           "Parent Relationship": "Outer",                                        +
-                           "Parallel Aware": false,                                               +
-                           "Startup Cost": 7784.55,                                               +
-                           "Total Cost": 7784.85,                                                 +
-                           "Plan Rows": 121,                                                      +
-                           "Plan Width": 65,                                                      +
-                           "Actual Startup Time": 121.068,                                        +
-                           "Actual Total Time": 121.082,                                          +
-                           "Actual Rows": 111,                                                    +
-                           "Actual Loops": 2,                                                     +
-                           "Sort Key": ["dt.d_year", "item.i_brand", "item.i_brand_id"],          +
-                           "Sort Method": "quicksort",                                            +
-                           "Sort Space Used": 39,                                                 +
-                           "Sort Space Type": "Memory",                                           +
-                           "Workers": [                                                           +
-                             {                                                                    +
-                               "Worker Number": 0,                                                +
-                               "Sort Method": "quicksort",                                        +
-                               "Sort Space Used": 41,                                             +
-                               "Sort Space Type": "Memory"                                        +
-                             }                                                                    +
-                           ],                                                                     +
-                           "Plans": [                                                             +
-                             {                                                                    +
-                               "Node Type": "Nested Loop",                                        +
-                               "Parent Relationship": "Outer",                                    +
-                               "Parallel Aware": false,                                           +
-                               "Join Type": "Inner",                                              +
-                               "Startup Cost": 6.07,                                              +
-                               "Total Cost": 7780.37,                                             +
-                               "Plan Rows": 121,                                                  +
-                               "Plan Width": 65,                                                  +
-                               "Actual Startup Time": 10.130,                                     +
-                               "Actual Total Time": 120.755,                                      +
-                               "Actual Rows": 111,                                                +
-                               "Actual Loops": 2,                                                 +
-                               "Inner Unique": true,                                              +
-                               "Plans": [                                                         +
-                                 {                                                                +
-                                   "Node Type": "Nested Loop",                                    +
-                                   "Parent Relationship": "Outer",                                +
-                                   "Parallel Aware": false,                                       +
-                                   "Join Type": "Inner",                                          +
-                                   "Startup Cost": 5.78,                                          +
-                                   "Total Cost": 7306.38,                                         +
-                                   "Plan Rows": 1506,                                             +
-                                   "Plan Width": 65,                                              +
-                                   "Actual Startup Time": 4.732,                                  +
-                                   "Actual Total Time": 116.156,                                  +
-                                   "Actual Rows": 716,                                            +
-                                   "Actual Loops": 2,                                             +
-                                   "Inner Unique": false,                                         +
-                                   "Plans": [                                                     +
-                                     {                                                            +
-                                       "Node Type": "Seq Scan",                                   +
-                                       "Parent Relationship": "Outer",                            +
-                                       "Parallel Aware": true,                                    +
-                                       "Relation Name": "item",                                   +
-                                       "Alias": "item",                                           +
-                                       "Startup Cost": 0.00,                                      +
-                                       "Total Cost": 1362.35,                                     +
-                                       "Plan Rows": 9,                                            +
-                                       "Plan Width": 59,                                          +
-                                       "Actual Startup Time": 3.666,                              +
-                                       "Actual Total Time": 6.990,                                +
-                                       "Actual Rows": 4,                                          +
-                                       "Actual Loops": 2,                                         +
-                                       "Filter": "(i_manufact_id = 890)",                         +
-                                       "Rows Removed by Filter": 8996                             +
-                                     },                                                           +
-                                     {                                                            +
-                                       "Node Type": "Bitmap Heap Scan",                           +
-                                       "Parent Relationship": "Inner",                            +
-                                       "Parallel Aware": false,                                   +
-                                       "Relation Name": "store_sales",                            +
-                                       "Alias": "store_sales",                                    +
-                                       "Startup Cost": 5.78,                                      +
-                                       "Total Cost": 658.71,                                      +
-                                       "Plan Rows": 174,                                          +
-                                       "Plan Width": 14,                                          +
-                                       "Actual Startup Time": 0.686,                              +
-                                       "Actual Total Time": 31.011,                               +
-                                       "Actual Rows": 205,                                        +
-                                       "Actual Loops": 7,                                         +
-                                       "Recheck Cond": "(ss_item_sk = item.i_item_sk)",           +
-                                       "Rows Removed by Index Recheck": 0,                        +
-                                       "Exact Heap Blocks": 700,                                  +
-                                       "Lossy Heap Blocks": 0,                                    +
-                                       "Plans": [                                                 +
-                                         {                                                        +
-                                           "Node Type": "Bitmap Index Scan",                      +
-                                           "Parent Relationship": "Outer",                        +
-                                           "Parallel Aware": false,                               +
-                                           "Index Name": "store_sales_pkey",                      +
-                                           "Startup Cost": 0.00,                                  +
-                                           "Total Cost": 5.73,                                    +
-                                           "Plan Rows": 174,                                      +
-                                           "Plan Width": 0,                                       +
-                                           "Actual Startup Time": 0.401,                          +
-                                           "Actual Total Time": 0.401,                            +
-                                           "Actual Rows": 205,                                    +
-                                           "Actual Loops": 7,                                     +
-                                           "Index Cond": "(ss_item_sk = item.i_item_sk)"          +
-                                         }                                                        +
-                                       ]                                                          +
-                                     }                                                            +
-                                   ]                                                              +
-                                 },                                                               +
-                                 {                                                                +
-                                   "Node Type": "Index Scan",                                     +
-                                   "Parent Relationship": "Inner",                                +
-                                   "Parallel Aware": false,                                       +
-                                   "Scan Direction": "Forward",                                   +
-                                   "Index Name": "date_dim_pkey",                                 +
-                                   "Relation Name": "date_dim",                                   +
-                                   "Alias": "dt",                                                 +
-                                   "Startup Cost": 0.29,                                          +
-                                   "Total Cost": 0.31,                                            +
-                                   "Plan Rows": 1,                                                +
-                                   "Plan Width": 8,                                               +
-                                   "Actual Startup Time": 0.005,                                  +
-                                   "Actual Total Time": 0.005,                                    +
-                                   "Actual Rows": 0,                                              +
-                                   "Actual Loops": 1432,                                          +
-                                   "Index Cond": "(d_date_sk = store_sales.ss_sold_date_sk)",     +
-                                   "Rows Removed by Index Recheck": 0,                            +
-                                   "Filter": "(d_moy = 12)",                                      +
-                                   "Rows Removed by Filter": 1                                    +
-                                 }                                                                +
-                               ]                                                                  +
-                             }                                                                    +
-                           ]                                                                      +
-                         }                                                                        +
-                       ]                                                                          +
-                     }                                                                            +
-                   ]                                                                              +
-                 }                                                                                +
-               ]                                                                                  +
-             }                                                                                    +
-           ]                                                                                      +
-         }                                                                                        +
-       ]                                                                                          +
-     },                                                                                           +
-     "Planning Time": 4.234,                                                                      +
-     "Triggers": [                                                                                +
-     ],                                                                                           +
-     "Execution Time": 128.707                                                                    +
-   }                                                                                              +
- ]
-(1 row)
-
+[
+  {
+    "Plan": {
+      "Node Type": "Limit",
+      "Parallel Aware": false,
+      "Startup Cost": 8813.16,
+      "Total Cost": 8813.41,
+      "Plan Rows": 100,
+      "Plan Width": 91,
+      "Actual Startup Time": 24.588,
+      "Actual Total Time": 24.593,
+      "Actual Rows": 22,
+      "Actual Loops": 1,
+      "Plans": [
+        {
+          "Node Type": "Sort",
+          "Parent Relationship": "Outer",
+          "Parallel Aware": false,
+          "Startup Cost": 8813.16,
+          "Total Cost": 8813.68,
+          "Plan Rows": 206,
+          "Plan Width": 91,
+          "Actual Startup Time": 24.586,
+          "Actual Total Time": 24.589,
+          "Actual Rows": 22,
+          "Actual Loops": 1,
+          "Sort Key": ["dt.d_year", "(sum(store_sales.ss_sales_price)) DESC", "item.i_brand_id"],
+          "Sort Method": "quicksort",
+          "Sort Space Used": 28,
+          "Sort Space Type": "Memory",
+          "Plans": [
+            {
+              "Node Type": "Aggregate",
+              "Strategy": "Sorted",
+              "Partial Mode": "Finalize",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Startup Cost": 8784.56,
+              "Total Cost": 8805.29,
+              "Plan Rows": 206,
+              "Plan Width": 91,
+              "Actual Startup Time": 24.342,
+              "Actual Total Time": 24.521,
+              "Actual Rows": 22,
+              "Actual Loops": 1,
+              "Group Key": ["dt.d_year", "item.i_brand", "item.i_brand_id"],
+              "Plans": [
+                {
+                  "Node Type": "Gather Merge",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Startup Cost": 8784.56,
+                  "Total Cost": 8801.20,
+                  "Plan Rows": 121,
+                  "Plan Width": 91,
+                  "Actual Startup Time": 24.309,
+                  "Actual Total Time": 26.377,
+                  "Actual Rows": 22,
+                  "Actual Loops": 1,
+                  "Workers Planned": 1,
+                  "Workers Launched": 1,
+                  "Plans": [
+                    {
+                      "Node Type": "Aggregate",
+                      "Strategy": "Sorted",
+                      "Partial Mode": "Partial",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "Startup Cost": 7784.55,
+                      "Total Cost": 7787.58,
+                      "Plan Rows": 121,
+                      "Plan Width": 91,
+                      "Actual Startup Time": 20.236,
+                      "Actual Total Time": 20.333,
+                      "Actual Rows": 11,
+                      "Actual Loops": 2,
+                      "Group Key": ["dt.d_year", "item.i_brand", "item.i_brand_id"],
+                      "Plans": [
+                        {
+                          "Node Type": "Sort",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Startup Cost": 7784.55,
+                          "Total Cost": 7784.85,
+                          "Plan Rows": 121,
+                          "Plan Width": 65,
+                          "Actual Startup Time": 20.194,
+                          "Actual Total Time": 20.206,
+                          "Actual Rows": 111,
+                          "Actual Loops": 2,
+                          "Sort Key": ["dt.d_year", "item.i_brand", "item.i_brand_id"],
+                          "Sort Method": "quicksort",
+                          "Sort Space Used": 43,
+                          "Sort Space Type": "Memory",
+                          "Workers": [
+                            {
+                              "Worker Number": 0,
+                              "Sort Method": "quicksort",
+                              "Sort Space Used": 38,
+                              "Sort Space Type": "Memory"
+                            }
+                          ],
+                          "Plans": [
+                            {
+                              "Node Type": "Nested Loop",
+                              "Parent Relationship": "Outer",
+                              "Parallel Aware": false,
+                              "Join Type": "Inner",
+                              "Startup Cost": 6.07,
+                              "Total Cost": 7780.37,
+                              "Plan Rows": 121,
+                              "Plan Width": 65,
+                              "Actual Startup Time": 3.258,
+                              "Actual Total Time": 19.930,
+                              "Actual Rows": 111,
+                              "Actual Loops": 2,
+                              "Inner Unique": true,
+                              "Plans": [
+                                {
+                                  "Node Type": "Nested Loop",
+                                  "Parent Relationship": "Outer",
+                                  "Parallel Aware": false,
+                                  "Join Type": "Inner",
+                                  "Startup Cost": 5.78,
+                                  "Total Cost": 7306.38,
+                                  "Plan Rows": 1506,
+                                  "Plan Width": 65,
+                                  "Actual Startup Time": 2.976,
+                                  "Actual Total Time": 16.405,
+                                  "Actual Rows": 716,
+                                  "Actual Loops": 2,
+                                  "Inner Unique": false,
+                                  "Plans": [
+                                    {
+                                      "Node Type": "Seq Scan",
+                                      "Parent Relationship": "Outer",
+                                      "Parallel Aware": true,
+                                      "Relation Name": "item",
+                                      "Alias": "item",
+                                      "Startup Cost": 0.00,
+                                      "Total Cost": 1362.35,
+                                      "Plan Rows": 9,
+                                      "Plan Width": 59,
+                                      "Actual Startup Time": 2.473,
+                                      "Actual Total Time": 7.401,
+                                      "Actual Rows": 4,
+                                      "Actual Loops": 2,
+                                      "Filter": "(i_manufact_id = 890)",
+                                      "Rows Removed by Filter": 8996
+                                    },
+                                    {
+                                      "Node Type": "Bitmap Heap Scan",
+                                      "Parent Relationship": "Inner",
+                                      "Parallel Aware": false,
+                                      "Relation Name": "store_sales",
+                                      "Alias": "store_sales",
+                                      "Startup Cost": 5.78,
+                                      "Total Cost": 658.71,
+                                      "Plan Rows": 174,
+                                      "Plan Width": 14,
+                                      "Actual Startup Time": 0.238,
+                                      "Actual Total Time": 2.444,
+                                      "Actual Rows": 205,
+                                      "Actual Loops": 7,
+                                      "Recheck Cond": "(ss_item_sk = item.i_item_sk)",
+                                      "Rows Removed by Index Recheck": 0,
+                                      "Exact Heap Blocks": 849,
+                                      "Lossy Heap Blocks": 0,
+                                      "Plans": [
+                                        {
+                                          "Node Type": "Bitmap Index Scan",
+                                          "Parent Relationship": "Outer",
+                                          "Parallel Aware": false,
+                                          "Index Name": "store_sales_pkey",
+                                          "Startup Cost": 0.00,
+                                          "Total Cost": 5.73,
+                                          "Plan Rows": 174,
+                                          "Plan Width": 0,
+                                          "Actual Startup Time": 0.187,
+                                          "Actual Total Time": 0.187,
+                                          "Actual Rows": 205,
+                                          "Actual Loops": 7,
+                                          "Index Cond": "(ss_item_sk = item.i_item_sk)"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "Node Type": "Index Scan",
+                                  "Parent Relationship": "Inner",
+                                  "Parallel Aware": false,
+                                  "Scan Direction": "Forward",
+                                  "Index Name": "date_dim_pkey",
+                                  "Relation Name": "date_dim",
+                                  "Alias": "dt",
+                                  "Startup Cost": 0.29,
+                                  "Total Cost": 0.31,
+                                  "Plan Rows": 1,
+                                  "Plan Width": 8,
+                                  "Actual Startup Time": 0.004,
+                                  "Actual Total Time": 0.004,
+                                  "Actual Rows": 0,
+                                  "Actual Loops": 1432,
+                                  "Index Cond": "(d_date_sk = store_sales.ss_sold_date_sk)",
+                                  "Rows Removed by Index Recheck": 0,
+                                  "Filter": "(d_moy = 12)",
+                                  "Rows Removed by Filter": 1
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "Planning Time": 6.608,
+    "Triggers": [
+    ],
+    "Execution Time": 26.645
+  }
+]

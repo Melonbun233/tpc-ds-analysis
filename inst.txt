@@ -1,0 +1,7 @@
+nextworkx
+
+count distinct operators
+data flow for each operations
+spesific/general operations
+
+sort//
