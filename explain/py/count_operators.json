@@ -1,48 +1,144 @@
 {
-    "total": 2664, 
-    "sub": {
-        "Sort": 228, 
-        "Gather Merge": 88, 
-        "Materialize": 12, 
+    "Total Count": 2664, 
+    "Total Data Flow": 12324725477, 
+    "Node Types": {
+        "Sort": {
+            "Count": 228, 
+            "Data Flow": 1016930391
+        }, 
+        "Gather Merge": {
+            "Count": 88, 
+            "Data Flow": 1751446054
+        }, 
+        "Materialize": {
+            "Count": 12, 
+            "Data Flow": 15190238
+        }, 
         "Join": {
-            "Full": {
-                "Merge Join": 2
-            }, 
-            "Anti": {
-                "Hash Join": 5
-            }, 
-            "Inner": {
-                "Hash Join": 274, 
-                "Merge Join": 10
-            }, 
-            "Semi": {
-                "Hash Join": 16
-            }, 
-            "Left": {
-                "Hash Join": 6, 
-                "Merge Join": 2
+            "Count": 315, 
+            "Data Flow": 1188303377, 
+            "Join Types": {
+                "Full": {
+                    "Merge Join": {
+                        "Count": 2, 
+                        "Data Flow": 1090480
+                    }
+                }, 
+                "Anti": {
+                    "Hash Join": {
+                        "Count": 5, 
+                        "Data Flow": 11232484
+                    }
+                }, 
+                "Inner": {
+                    "Hash Join": {
+                        "Count": 274, 
+                        "Data Flow": 1161213543
+                    }, 
+                    "Merge Join": {
+                        "Count": 10, 
+                        "Data Flow": 842893
+                    }
+                }, 
+                "Semi": {
+                    "Hash Join": {
+                        "Count": 16, 
+                        "Data Flow": 204405
+                    }
+                }, 
+                "Left": {
+                    "Hash Join": {
+                        "Count": 6, 
+                        "Data Flow": 13524176
+                    }, 
+                    "Merge Join": {
+                        "Count": 2, 
+                        "Data Flow": 195396
+                    }
+                }
             }
         }, 
-        "Group": 7, 
-        "Scan": {
-            "Subquery Scan": 40, 
-            "Bitmap Index Scan": 9, 
-            "Index Only Scan": 16, 
-            "CTE Scan": 98, 
-            "Seq Scan": 505, 
-            "Bitmap Heap Scan": 9, 
-            "Index Scan": 206
+        "Group": {
+            "Count": 7, 
+            "Data Flow": 235689
         }, 
-        "Gather": 86, 
-        "Nested Loop": 271, 
-        "Filter": 423, 
-        "SetOp": 7, 
-        "Limit": 84, 
-        "WindowAgg": 26, 
-        "Aggregate": 314, 
-        "Hash": 301, 
-        "Unique": 10, 
-        "Append": 29, 
-        "Result": 3
+        "Scan": {
+            "Count": 883, 
+            "Data Flow": 2604625304, 
+            "Scan Types": {
+                "Subquery Scan": {
+                    "Count": 40, 
+                    "Data Flow": 36764017
+                }, 
+                "Bitmap Index Scan": {
+                    "Count": 9, 
+                    "Data Flow": 0
+                }, 
+                "Index Only Scan": {
+                    "Count": 16, 
+                    "Data Flow": 1444
+                }, 
+                "CTE Scan": {
+                    "Count": 98, 
+                    "Data Flow": 177256122
+                }, 
+                "Seq Scan": {
+                    "Count": 505, 
+                    "Data Flow": 2378967189
+                }, 
+                "Bitmap Heap Scan": {
+                    "Count": 9, 
+                    "Data Flow": 14184
+                }, 
+                "Index Scan": {
+                    "Count": 206, 
+                    "Data Flow": 11622348
+                }
+            }
+        }, 
+        "Gather": {
+            "Count": 86, 
+            "Data Flow": 51531077
+        }, 
+        "Nested Loop": {
+            "Count": 271, 
+            "Data Flow": 30518183
+        }, 
+        "Filter": {
+            "Count": 423, 
+            "Data Flow": 57131429
+        }, 
+        "SetOp": {
+            "Count": 7, 
+            "Data Flow": 7893936
+        }, 
+        "Limit": {
+            "Count": 84, 
+            "Data Flow": 638733
+        }, 
+        "WindowAgg": {
+            "Count": 26, 
+            "Data Flow": 30732781
+        }, 
+        "Aggregate": {
+            "Count": 314, 
+            "Data Flow": 3222178885
+        }, 
+        "Hash": {
+            "Count": 301, 
+            "Data Flow": 100056611
+        }, 
+        "Unique": {
+            "Count": 10, 
+            "Data Flow": 28754613
+        }, 
+        "Append": {
+            "Count": 29, 
+            "Data Flow": 2271367157
+        }, 
+        "Result": {
+            "Count": 3, 
+            "Data Flow": 4322448
+        }
     }
 }
