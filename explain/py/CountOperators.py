@@ -91,13 +91,26 @@ for key in types:
 
 index = np.arange(len(objects));
 
+
+plt.figure(num = 1,figsize=(10, 8));
+
+plt.subplot(2, 1, 1);
 plt.bar(index, counts, color = "SkyBlue");
 plt.xlabel("Operators");
 plt.ylabel("No. of operators");
-plt.xticks(index + 0.35, objects, fontsize = 5, rotation = 30);
+plt.xticks(index + 0.35, objects, fontsize = 8, rotation = 30);
 plt.title("Number of different operators used in tpc-ds with scale factor of 1");
-plt.show();
 
+plt.subplot(2, 1, 2);
+plt.bar(index, data_flows, color = "r");
+plt.xlabel("Operators");
+plt.ylabel("dataflow (rows * width)");
+plt.xticks(index + 0.35, objects, fontsize = 8, rotation = 30);
+plt.title("Dataflow produced by different operators used in tpc-ds with scale factor of 1");
+
+plt.subplots_adjust(hspace = 0.5);
+
+plt.show();
 
 
 
