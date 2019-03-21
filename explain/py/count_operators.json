@@ -17,7 +17,7 @@
         "Join": {
             "Count": 315, 
             "Data Flow": 1188303377, 
-            "Join Types": {
+            "Types": {
                 "Full": {
                     "Merge Join": {
                         "Count": 2, 
@@ -65,7 +65,7 @@
         "Scan": {
             "Count": 883, 
             "Data Flow": 2604625304, 
-            "Scan Types": {
+            "Types": {
                 "Subquery Scan": {
                     "Count": 40, 
                     "Data Flow": 36764017

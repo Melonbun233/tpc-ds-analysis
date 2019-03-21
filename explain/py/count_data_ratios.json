@@ -1,0 +1,169 @@
+{
+    "Total Count": 1803, 
+    "Types": {
+        "Sort": {
+            "Count": 228, 
+            "Ratio": 0.8751891271590627, 
+            "Data In": 1161955010, 
+            "Data Out": 1016930391
+        }, 
+        "Gather Merge": {
+            "Count": 88, 
+            "Ratio": 1.9999481173613924, 
+            "Data In": 875745745, 
+            "Data Out": 1751446054
+        }, 
+        "Materialize": {
+            "Count": 12, 
+            "Ratio": 1.0, 
+            "Data In": 15190238, 
+            "Data Out": 15190238
+        }, 
+        "Join": {
+            "Count": 314, 
+            "Ratio": 0.34826275520913424, 
+            "Data In": 2598794179, 
+            "Data Out": 905063221, 
+            "Types": {
+                "Full": {
+                    "Merge Join": {
+                        "Count": 2, 
+                        "Ratio": 0.7663892949510851, 
+                        "Data In": 853728, 
+                        "Data Out": 654288
+                    }
+                }, 
+                "Anti": {
+                    "Hash Join": {
+                        "Count": 5, 
+                        "Ratio": 0.04635558959094915, 
+                        "Data In": 69209000, 
+                        "Data Out": 3208224
+                    }
+                }, 
+                "Inner": {
+                    "Hash Join": {
+                        "Count": 274, 
+                        "Ratio": 0.3638465827297276, 
+                        "Data In": 2463381465, 
+                        "Data Out": 896292928
+                    }, 
+                    "Merge Join": {
+                        "Count": 10, 
+                        "Ratio": 0.011315449086360854, 
+                        "Data In": 43014466, 
+                        "Data Out": 486728
+                    }
+                }, 
+                "Semi": {
+                    "Hash Join": {
+                        "Count": 16, 
+                        "Ratio": 0.029537927759536786, 
+                        "Data In": 5209878, 
+                        "Data Out": 153889
+                    }
+                }, 
+                "Left": {
+                    "Hash Join": {
+                        "Count": 6, 
+                        "Ratio": 0.24943135547838224, 
+                        "Data In": 16854994, 
+                        "Data Out": 4204164
+                    }, 
+                    "Merge Join": {
+                        "Count": 1, 
+                        "Ratio": 0.23277467411545624, 
+                        "Data In": 270648, 
+                        "Data Out": 63000
+                    }
+                }
+            }
+        }, 
+        "Group": {
+            "Count": 7, 
+            "Ratio": 0.9990716720077318, 
+            "Data In": 235908, 
+            "Data Out": 235689
+        }, 
+        "Scan": {
+            "Count": 38, 
+            "Ratio": 1.0467068594938593, 
+            "Data In": 30819927, 
+            "Data Out": 32259429, 
+            "Types": {
+                "Subquery Scan": {
+                    "Count": 29, 
+                    "Ratio": 1.0467068594938593, 
+                    "Data In": 30819927, 
+                    "Data Out": 32259429
+                }, 
+                "Bitmap Heap Scan": {
+                    "Count": 9, 
+                    "Ratio": 0, 
+                    "Data In": 0, 
+                    "Data Out": 0
+                }
+            }
+        }, 
+        "Gather": {
+            "Count": 86, 
+            "Ratio": 1.3635091562766866, 
+            "Data In": 37792982, 
+            "Data Out": 51531077
+        }, 
+        "Nested Loop": {
+            "Count": 271, 
+            "Ratio": 0.1445048284276916, 
+            "Data In": 127990526, 
+            "Data Out": 18495249
+        }, 
+        "SetOp": {
+            "Count": 7, 
+            "Ratio": 0.4588798682991312, 
+            "Data In": 17202620, 
+            "Data Out": 7893936
+        }, 
+        "Limit": {
+            "Count": 84, 
+            "Ratio": 0.0002785021791056983, 
+            "Data In": 2293457818, 
+            "Data Out": 638733
+        }, 
+        "WindowAgg": {
+            "Count": 26, 
+            "Ratio": 1.0, 
+            "Data In": 28275653, 
+            "Data Out": 28275653
+        }, 
+        "Aggregate": {
+            "Count": 299, 
+            "Ratio": 1.0318895129786287, 
+            "Data In": 2728047840, 
+            "Data Out": 2815043957
+        }, 
+        "Hash": {
+            "Count": 301, 
+            "Ratio": 1.0, 
+            "Data In": 100056611, 
+            "Data Out": 100056611
+        }, 
+        "Unique": {
+            "Count": 10, 
+            "Ratio": 1.0, 
+            "Data In": 28754613, 
+            "Data Out": 28754613
+        }, 
+        "Append": {
+            "Count": 29, 
+            "Ratio": 1.0100674928105868, 
+            "Data In": 2240053847, 
+            "Data Out": 2262605573
+        }, 
+        "Result": {
+            "Count": 3, 
+            "Ratio": 1.0, 
+            "Data In": 4322448, 
+            "Data Out": 4322448
+        }
+    }
+}

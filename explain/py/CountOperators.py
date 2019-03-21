@@ -32,23 +32,23 @@ def store_plan(plan, result):
 	# scan node
 	if("Scan" in node_type):
 		if ("Scan" in types):
-			result_add(node_type, types["Scan"]["Scan Types"], data_flow);
+			result_add(node_type, types["Scan"]["Types"], data_flow);
 		else:
 			types["Scan"] = {"Data Flow": 0, "Count": 0, 
-			"Scan Types": {node_type: {"Count": 1, "Data Flow": data_flow}}};
+			"Types": {node_type: {"Count": 1, "Data Flow": data_flow}}};
 		types["Scan"]["Data Flow"] += data_flow;
 		types["Scan"]["Count"] += 1; 
 	# join node
 	elif("Join" in node_type):
 		join_type = plan["Join Type"];
 		if("Join" in types):
-			if(join_type in types["Join"]["Join Types"]):
-				result_add(node_type, types["Join"]["Join Types"][join_type], data_flow);
+			if(join_type in types["Join"]["Types"]):
+				result_add(node_type, types["Join"]["Types"][join_type], data_flow);
 			else:
-				types["Join"]["Join Types"][join_type] = {node_type: {"Count": 1, "Data Flow": data_flow}};
+				types["Join"]["Types"][join_type] = {node_type: {"Count": 1, "Data Flow": data_flow}};
 		else:
 			types["Join"] = {"Data Flow":0, "Count": 0, 
-			"Join Types":{join_type:{node_type: {"Count": 1, "Data Flow": data_flow}}}};
+			"Types":{join_type:{node_type: {"Count": 1, "Data Flow": data_flow}}}};
 		types["Join"]["Data Flow"] += data_flow;
 		types["Join"]["Count"] += 1;
 
@@ -82,7 +82,7 @@ f.close();
 objects = [];
 counts = [];
 data_flows = [];
-types = result["Node Types"]
+types = result["Node Types"];
 
 for key in types:
 	objects.append(key);
