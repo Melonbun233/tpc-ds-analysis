@@ -10,6 +10,5 @@ def parse_explain():
 		f.close();
 
 	return all_explains;
-
 #all_explains = parse_explain();
 #print json.dumps(all_explains[0], indent = 4);
