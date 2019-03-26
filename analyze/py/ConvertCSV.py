@@ -61,6 +61,14 @@ def write_element(f, element):
 		data = str(element).replace(',', ';').replace('"', '');
 	f.write("\"" + data.encode("ascii", "ignore") + "\",");
 
+def wirte_list_element(f, element):
+	if isinstance(element, dict):
+		data = json.dumps(element).replace(',', ';').replace('"', '');
+	else:
+		data = str(element).replace(',', ';').replace('"','');
+
+	f.write(data.encode('ascii', 'ignore') + ',');
+	
 def process_none(f, key):
 	if key == "Group Key":
 		f.write("{},");
@@ -88,7 +96,7 @@ def convert_csv(fields, data):
 			if isinstance(row[key], list):
 				f.write("\"{");
 				for value in row[key]:
-					write_element(f, value);
+					wirte_list_element(f, value);
 				if len(row[key]) is not 0:
 					truncate_last(f);
 				f.write("}\",");
