@@ -1,3 +1,5 @@
+SET max_parallel_workers_per_gather TO 0;
+\o ../../analyze/analyze_14.json
 EXPLAIN (FORMAT JSON, ANALYZE)
 -- start query 1 in stream 14 using template query15.tpl
 select  ca_zip
@@ -19,3 +21,4 @@ select  ca_zip
  limit 100;
 
 -- end query 1 in stream 14 using template query15.tpl
+\echo query_14 processed

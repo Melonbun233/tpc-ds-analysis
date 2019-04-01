@@ -1,3 +1,5 @@
+SET max_parallel_workers_per_gather TO 0;
+\o ../../analyze/analyze_77.json
 EXPLAIN (FORMAT JSON, ANALYZE)
 -- start query 1 in stream 77 using template query78.tpl
 with ws as
@@ -57,3 +59,4 @@ order by
 limit 100;
 
 -- end query 1 in stream 77 using template query78.tpl
+\echo query_77 processed

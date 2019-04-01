@@ -10,5 +10,5 @@ def parse_analyze():
 		f.close();
 	print("Parsed all analysis json");
 	return all_analysis;
-#all_explains = parse_explain();
-#print json.dumps(all_explains[0], indent = 4);
+all_explains = parse_explain();
+print json.dumps(all_explains[0], indent = 4);

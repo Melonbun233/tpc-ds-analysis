@@ -1,3 +1,5 @@
+SET max_parallel_workers_per_gather TO 0;
+\o ../../analyze/analyze_3.json
 EXPLAIN (FORMAT JSON, ANALYZE)
 -- start query 1 in stream 3 using template query4.tpl
 with year_total as (
@@ -115,3 +117,4 @@ union all
 limit 100;
 
 -- end query 1 in stream 3 using template query4.tpl
+\echo query_3 processed

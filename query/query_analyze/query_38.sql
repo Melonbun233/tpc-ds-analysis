@@ -1,3 +1,5 @@
+SET max_parallel_workers_per_gather TO 0;
+\o ../../analyze/analyze_38.json
 EXPLAIN (FORMAT JSON, ANALYZE)
 -- start query 1 in stream 38 using template query39.tpl
 with inv as
@@ -53,3 +55,4 @@ order by inv1.w_warehouse_sk,inv1.i_item_sk,inv1.d_moy,inv1.mean,inv1.cov
 ;
 
 -- end query 1 in stream 38 using template query39.tpl
+\echo query_38 processed

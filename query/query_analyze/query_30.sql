@@ -1,3 +1,5 @@
+SET max_parallel_workers_per_gather TO 0;
+\o ../../analyze/analyze_30.json
 EXPLAIN (FORMAT JSON, ANALYZE)
 -- start query 1 in stream 30 using template query31.tpl
 with ss as
@@ -51,3 +53,4 @@ with ss as
  order by store_q2_q3_increase;
 
 -- end query 1 in stream 30 using template query31.tpl
+\echo query_30 processed

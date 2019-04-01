@@ -1,3 +1,5 @@
+SET max_parallel_workers_per_gather TO 0;
+\o ../../analyze/analyze_44.json
 EXPLAIN (FORMAT JSON, ANALYZE)
 -- start query 1 in stream 44 using template query45.tpl
 select  ca_zip, ca_city, sum(ws_sales_price)
@@ -19,3 +21,4 @@ select  ca_zip, ca_city, sum(ws_sales_price)
  limit 100;
 
 -- end query 1 in stream 44 using template query45.tpl
+\echo query_44 processed

@@ -1,3 +1,5 @@
+SET max_parallel_workers_per_gather TO 0;
+\o ../../analyze/analyze_43.json
 EXPLAIN (FORMAT JSON, ANALYZE)
 -- start query 1 in stream 43 using template query44.tpl
 select  asceding.rnk, i1.i_product_name best_performing, i2.i_product_name worst_performing
@@ -34,3 +36,4 @@ order by asceding.rnk
 limit 100;
 
 -- end query 1 in stream 43 using template query44.tpl
+\echo query_43 processed

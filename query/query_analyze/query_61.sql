@@ -1,3 +1,5 @@
+SET max_parallel_workers_per_gather TO 0;
+\o ../../analyze/analyze_61.json
 EXPLAIN (FORMAT JSON, ANALYZE)
 -- start query 1 in stream 61 using template query62.tpl
 select  
@@ -34,3 +36,4 @@ order by substr(w_warehouse_name,1,20)
 limit 100;
 
 -- end query 1 in stream 61 using template query62.tpl
+\echo query_61 processed

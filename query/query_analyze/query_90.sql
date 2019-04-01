@@ -1,3 +1,5 @@
+SET max_parallel_workers_per_gather TO 0;
+\o ../../analyze/analyze_90.json
 EXPLAIN (FORMAT JSON, ANALYZE)
 -- start query 1 in stream 90 using template query91.tpl
 select  
@@ -30,3 +32,4 @@ group by cc_call_center_id,cc_name,cc_manager,cd_marital_status,cd_education_sta
 order by sum(cr_net_loss) desc;
 
 -- end query 1 in stream 90 using template query91.tpl
+\echo query_90 processed

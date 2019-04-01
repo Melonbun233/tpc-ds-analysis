@@ -1,3 +1,5 @@
+SET max_parallel_workers_per_gather TO 0;
+\o ../../analyze/analyze_23.json
 EXPLAIN (FORMAT JSON, ANALYZE)
 -- start query 1 in stream 23 using template query24.tpl
 with ssales as
@@ -106,3 +108,4 @@ order by c_last_name
 ;
 
 -- end query 1 in stream 23 using template query24.tpl
+\echo query_23 processed

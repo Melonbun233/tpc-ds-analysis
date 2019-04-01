@@ -1,3 +1,5 @@
+SET max_parallel_workers_per_gather TO 0;
+\o ../../analyze/analyze_89.json
 EXPLAIN (FORMAT JSON, ANALYZE)
 -- start query 1 in stream 89 using template query90.tpl
 select  cast(amc as decimal(15,4))/cast(pmc as decimal(15,4)) am_pm_ratio
@@ -21,3 +23,4 @@ select  cast(amc as decimal(15,4))/cast(pmc as decimal(15,4)) am_pm_ratio
  limit 100;
 
 -- end query 1 in stream 89 using template query90.tpl
+\echo query_89 processed

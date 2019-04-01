@@ -1,3 +1,5 @@
+SET max_parallel_workers_per_gather TO 0;
+\o ../../analyze/analyze_70.json
 EXPLAIN (FORMAT JSON, ANALYZE)
 -- start query 1 in stream 70 using template query71.tpl
 select i_brand_id brand_id, i_brand brand,t_hour,t_minute,
@@ -39,3 +41,4 @@ select i_brand_id brand_id, i_brand brand,t_hour,t_minute,
  ;
 
 -- end query 1 in stream 70 using template query71.tpl
+\echo query_70 processed

@@ -1,3 +1,5 @@
+SET max_parallel_workers_per_gather TO 0;
+\o ../../analyze/analyze_86.json
 EXPLAIN (FORMAT JSON, ANALYZE)
 -- start query 1 in stream 86 using template query87.tpl
 select count(*) 
@@ -22,3 +24,4 @@ from ((select distinct c_last_name, c_first_name, d_date
 ;
 
 -- end query 1 in stream 86 using template query87.tpl
+\echo query_86 processed

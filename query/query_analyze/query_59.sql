@@ -1,3 +1,5 @@
+SET max_parallel_workers_per_gather TO 0;
+\o ../../analyze/analyze_59.json
 EXPLAIN (FORMAT JSON, ANALYZE)
 -- start query 1 in stream 59 using template query60.tpl
 with ss as (
@@ -77,3 +79,4 @@ where i_category in ('Music'))
  limit 100;
 
 -- end query 1 in stream 59 using template query60.tpl
+\echo query_59 processed

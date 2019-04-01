@@ -1,3 +1,5 @@
+SET max_parallel_workers_per_gather TO 0;
+\o ../../analyze/analyze_69.json
 EXPLAIN (FORMAT JSON, ANALYZE)
 -- start query 1 in stream 69 using template query70.tpl
 
@@ -38,3 +40,4 @@ ORDER BY lochierarchy DESC ,
 LIMIT 100;
 
 -- end query 1 in stream 69 using template query70.tpl
+\echo query_69 processed

@@ -1,3 +1,5 @@
+SET max_parallel_workers_per_gather TO 0;
+\o ../../analyze/analyze_32.json
 EXPLAIN (FORMAT JSON, ANALYZE)
 -- start query 1 in stream 32 using template query33.tpl
 with ss as (
@@ -74,3 +76,4 @@ where i_category in ('Sports'))
 limit 100;
 
 -- end query 1 in stream 32 using template query33.tpl
+\echo query_32 processed

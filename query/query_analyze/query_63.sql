@@ -1,3 +1,5 @@
+SET max_parallel_workers_per_gather TO 0;
+\o ../../analyze/analyze_63.json
 EXPLAIN (FORMAT JSON, ANALYZE)
 -- start query 1 in stream 63 using template query64.tpl
 with cs_ui as
@@ -120,3 +122,4 @@ order by cs1.product_name
        ,cs2.s1;
 
 -- end query 1 in stream 63 using template query64.tpl
+\echo query_63 processed

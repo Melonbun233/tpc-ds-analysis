@@ -1,3 +1,5 @@
+SET max_parallel_workers_per_gather TO 0;
+\o ../../analyze/analyze_22.json
 EXPLAIN (FORMAT JSON, ANALYZE)
 -- start query 1 in stream 22 using template query23.tpl
 WITH frequent_ss_items AS
@@ -160,3 +162,4 @@ ORDER BY c_last_name,
 LIMIT 100;
 
 -- end query 1 in stream 22 using template query23.tpl
+\echo query_22 processed

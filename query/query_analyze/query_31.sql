@@ -1,3 +1,5 @@
+SET max_parallel_workers_per_gather TO 0;
+\o ../../analyze/analyze_31.json
 EXPLAIN (FORMAT JSON, ANALYZE)
 -- start query 1 in stream 31 using template query32.tpl
 select  sum(cs_ext_discount_amt)  as "excess discount amount" 
@@ -27,3 +29,4 @@ and cs_ext_discount_amt
 limit 100;
 
 -- end query 1 in stream 31 using template query32.tpl
+\echo query_31 processed

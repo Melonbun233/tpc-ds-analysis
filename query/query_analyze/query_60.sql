@@ -1,3 +1,5 @@
+SET max_parallel_workers_per_gather TO 0;
+\o ../../analyze/analyze_60.json
 EXPLAIN (FORMAT JSON, ANALYZE)
 -- start query 1 in stream 60 using template query61.tpl
 select  promotions,total,cast(promotions as decimal(15,4))/cast(total as decimal(15,4))*100
@@ -43,3 +45,4 @@ order by promotions, total
 limit 100;
 
 -- end query 1 in stream 60 using template query61.tpl
+\echo query_60 processed

@@ -1,3 +1,5 @@
+SET max_parallel_workers_per_gather TO 0;
+\o ../../analyze/analyze_40.json
 EXPLAIN (FORMAT JSON, ANALYZE)
 -- start query 1 in stream 40 using template query41.tpl
 select  distinct(i_product_name)
@@ -51,3 +53,4 @@ select  distinct(i_product_name)
  limit 100;
 
 -- end query 1 in stream 40 using template query41.tpl
+\echo query_40 processed

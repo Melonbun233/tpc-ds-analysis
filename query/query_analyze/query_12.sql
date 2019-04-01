@@ -1,3 +1,5 @@
+SET max_parallel_workers_per_gather TO 0;
+\o ../../analyze/analyze_12.json
 EXPLAIN (FORMAT JSON, ANALYZE)
 -- start query 1 in stream 12 using template query13.tpl
 select avg(ss_quantity)
@@ -51,3 +53,4 @@ select avg(ss_quantity)
 ;
 
 -- end query 1 in stream 12 using template query13.tpl
+\echo query_12 processed

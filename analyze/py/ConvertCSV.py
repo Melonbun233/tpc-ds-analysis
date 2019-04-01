@@ -127,7 +127,7 @@ fields.append("id");
 fields.append("parent_id");
 fields.append("child_id");
 
-#print json.dumps(fields, indent = 4);
+print json.dumps(fields, indent = 4);
 
 data = [];
 id_counter = 0;

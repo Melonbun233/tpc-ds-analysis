@@ -1,3 +1,5 @@
+SET max_parallel_workers_per_gather TO 0;
+\o ../../analyze/analyze_91.json
 EXPLAIN (FORMAT JSON, ANALYZE)
 -- start query 1 in stream 91 using template query92.tpl
 select  
@@ -29,3 +31,4 @@ order by sum(ws_ext_discount_amt)
 limit 100;
 
 -- end query 1 in stream 91 using template query92.tpl
+\echo query_91 processed

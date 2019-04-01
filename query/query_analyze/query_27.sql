@@ -1,3 +1,5 @@
+SET max_parallel_workers_per_gather TO 0;
+\o ../../analyze/analyze_27.json
 EXPLAIN (FORMAT JSON, ANALYZE)
 -- start query 1 in stream 27 using template query28.tpl
 select  *
@@ -52,3 +54,4 @@ from (select avg(ss_list_price) B1_LP
 limit 100;
 
 -- end query 1 in stream 27 using template query28.tpl
+\echo query_27 processed

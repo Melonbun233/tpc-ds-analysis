@@ -1,3 +1,5 @@
+SET max_parallel_workers_per_gather TO 0;
+\o ../../analyze/analyze_97.json
 EXPLAIN (FORMAT JSON, ANALYZE)
 -- start query 1 in stream 97 using template query98.tpl
 select i_item_id
@@ -32,3 +34,4 @@ order by
         ,revenueratio;
 
 -- end query 1 in stream 97 using template query98.tpl
+\echo query_97 processed

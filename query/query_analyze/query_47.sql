@@ -1,3 +1,5 @@
+SET max_parallel_workers_per_gather TO 0;
+\o ../../analyze/analyze_47.json
 EXPLAIN (FORMAT JSON, ANALYZE)
 -- start query 1 in stream 47 using template query48.tpl
 select sum (ss_quantity)
@@ -66,3 +68,4 @@ select sum (ss_quantity)
 ;
 
 -- end query 1 in stream 47 using template query48.tpl
+\echo query_47 processed

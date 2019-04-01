@@ -1,3 +1,5 @@
+SET max_parallel_workers_per_gather TO 0;
+\o ../../analyze/analyze_52.json
 EXPLAIN (FORMAT JSON, ANALYZE)
 -- start query 1 in stream 52 using template query53.tpl
 select  * from 
@@ -27,3 +29,4 @@ order by avg_quarterly_sales,
 limit 100;
 
 -- end query 1 in stream 52 using template query53.tpl
+\echo query_52 processed

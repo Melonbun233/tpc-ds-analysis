@@ -1,3 +1,5 @@
+SET max_parallel_workers_per_gather TO 0;
+\o ../../analyze/analyze_1.json
 EXPLAIN (FORMAT JSON, ANALYZE)
 -- start query 1 in stream 1 using template query2.tpl
 with wscs as
@@ -59,3 +61,4 @@ with wscs as
  order by d_week_seq1;
 
 -- end query 1 in stream 1 using template query2.tpl
+\echo query_1 processed

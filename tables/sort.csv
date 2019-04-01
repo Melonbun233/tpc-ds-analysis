@@ -1,0 +1,9 @@
+Node Type,count
+Aggregate,115
+Gather Merge,1
+Group,4
+Limit,50
+Materialize,2
+Merge Join,19
+Unique,10
+WindowAgg,18

@@ -1,3 +1,5 @@
+SET max_parallel_workers_per_gather TO 0;
+\o ../../analyze/analyze_75.json
 EXPLAIN (FORMAT JSON, ANALYZE)
 -- start query 1 in stream 75 using template query76.tpl
 select  channel, col_name, d_year, d_qoy, i_category, COUNT(*) sales_cnt, SUM(ext_sales_price) sales_amt FROM (
@@ -23,3 +25,4 @@ ORDER BY channel, col_name, d_year, d_qoy, i_category
 limit 100;
 
 -- end query 1 in stream 75 using template query76.tpl
+\echo query_75 processed

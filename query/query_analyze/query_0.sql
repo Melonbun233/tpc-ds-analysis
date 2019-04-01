@@ -1,3 +1,5 @@
+SET max_parallel_workers_per_gather TO 0;
+\o ../../analyze/analyze_0.json
 EXPLAIN (FORMAT JSON, ANALYZE)
 -- start query 1 in stream 0 using template query1.tpl
 with customer_total_return as
@@ -24,3 +26,4 @@ order by c_customer_id
 limit 100;
 
 -- end query 1 in stream 0 using template query1.tpl
+\echo query_0 processed

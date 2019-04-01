@@ -1,3 +1,5 @@
+SET max_parallel_workers_per_gather TO 0;
+\o ../../analyze/analyze_55.json
 EXPLAIN (FORMAT JSON, ANALYZE)
 -- start query 1 in stream 55 using template query56.tpl
 with ss as (
@@ -68,3 +70,4 @@ where i_color in ('cornsilk','sky','azure'))
  limit 100;
 
 -- end query 1 in stream 55 using template query56.tpl
+\echo query_55 processed

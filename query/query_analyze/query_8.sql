@@ -1,3 +1,5 @@
+SET max_parallel_workers_per_gather TO 0;
+\o ../../analyze/analyze_8.json
 EXPLAIN (FORMAT JSON, ANALYZE)
 -- start query 1 in stream 8 using template query9.tpl
 select case when (select count(*) 
@@ -50,3 +52,4 @@ where r_reason_sk = 1
 ;
 
 -- end query 1 in stream 8 using template query9.tpl
+\echo query_8 processed

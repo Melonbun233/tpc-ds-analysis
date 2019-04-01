@@ -1,3 +1,5 @@
+SET max_parallel_workers_per_gather TO 0;
+\o ../../analyze/analyze_96.json
 EXPLAIN (FORMAT JSON, ANALYZE)
 -- start query 1 in stream 96 using template query97.tpl
 with ssci as (
@@ -24,3 +26,4 @@ from ssci full outer join csci on (ssci.customer_sk=csci.customer_sk
 limit 100;
 
 -- end query 1 in stream 96 using template query97.tpl
+\echo query_96 processed

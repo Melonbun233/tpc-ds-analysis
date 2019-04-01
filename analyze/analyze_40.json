@@ -7,8 +7,8 @@
       "Total Cost": 71551770.13,
       "Plan Rows": 7,
       "Plan Width": 51,
-      "Actual Startup Time": 147.467,
-      "Actual Total Time": 147.467,
+      "Actual Startup Time": 173.197,
+      "Actual Total Time": 173.197,
       "Actual Rows": 0,
       "Actual Loops": 1,
       "Plans": [
@@ -20,8 +20,8 @@
           "Total Cost": 71551770.13,
           "Plan Rows": 7,
           "Plan Width": 51,
-          "Actual Startup Time": 147.466,
-          "Actual Total Time": 147.466,
+          "Actual Startup Time": 173.196,
+          "Actual Total Time": 173.196,
           "Actual Rows": 0,
           "Actual Loops": 1,
           "Plans": [
@@ -33,8 +33,8 @@
               "Total Cost": 71551770.12,
               "Plan Rows": 7,
               "Plan Width": 51,
-              "Actual Startup Time": 147.465,
-              "Actual Total Time": 147.466,
+              "Actual Startup Time": 173.195,
+              "Actual Total Time": 173.195,
               "Actual Rows": 0,
               "Actual Loops": 1,
               "Sort Key": ["i1.i_product_name"],
@@ -52,8 +52,8 @@
                   "Total Cost": 71551770.00,
                   "Plan Rows": 7,
                   "Plan Width": 51,
-                  "Actual Startup Time": 147.461,
-                  "Actual Total Time": 147.461,
+                  "Actual Startup Time": 173.190,
+                  "Actual Total Time": 173.190,
                   "Actual Rows": 0,
                   "Actual Loops": 1,
                   "Filter": "((i_manufact_id >= 999) AND (i_manufact_id <= 1039) AND ((SubPlan 1) > 0))",
@@ -70,8 +70,8 @@
                       "Total Cost": 3975.01,
                       "Plan Rows": 1,
                       "Plan Width": 8,
-                      "Actual Startup Time": 11.664,
-                      "Actual Total Time": 11.664,
+                      "Actual Startup Time": 13.696,
+                      "Actual Total Time": 13.697,
                       "Actual Rows": 1,
                       "Actual Loops": 12,
                       "Plans": [
@@ -85,8 +85,8 @@
                           "Total Cost": 3975.00,
                           "Plan Rows": 1,
                           "Plan Width": 0,
-                          "Actual Startup Time": 11.660,
-                          "Actual Total Time": 11.660,
+                          "Actual Startup Time": 13.686,
+                          "Actual Total Time": 13.686,
                           "Actual Rows": 0,
                           "Actual Loops": 12,
                           "Filter": "((i_manufact = i1.i_manufact) AND (((i_category = 'Women'::bpchar) AND ((i_color = 'lemon'::bpchar) OR (i_color = 'misty'::bpchar)) AND ((i_units = 'Box'::bpchar) OR (i_units = 'Cup'::bpchar)) AND ((i_size = 'petite'::bpchar) OR (i_size = 'N/A'::bpchar))) OR ((i_category = 'Women'::bpchar) AND ((i_color = 'snow'::bpchar) OR (i_color = 'deep'::bpchar)) AND ((i_units = 'Ton'::bpchar) OR (i_units = 'Gram'::bpchar)) AND ((i_size = 'medium'::bpchar) OR (i_size = 'economy'::bpchar))) OR ((i_category = 'Men'::bpchar) AND ((i_color = 'ivory'::bpchar) OR (i_color = 'lawn'::bpchar)) AND ((i_units = 'Tsp'::bpchar) OR (i_units = 'Unknown'::bpchar)) AND ((i_size = 'extra large'::bpchar) OR (i_size = 'large'::bpchar))) OR ((i_category = 'Men'::bpchar) AND ((i_color = 'cornflower'::bpchar) OR (i_color = 'khaki'::bpchar)) AND ((i_units = 'Dozen'::bpchar) OR (i_units = 'Bunch'::bpchar)) AND ((i_size = 'petite'::bpchar) OR (i_size = 'N/A'::bpchar))) OR ((i_category = 'Women'::bpchar) AND ((i_color = 'slate'::bpchar) OR (i_color = 'peach'::bpchar)) AND ((i_units = 'Dram'::bpchar) OR (i_units = 'Each'::bpchar)) AND ((i_size = 'petite'::bpchar) OR (i_size = 'N/A'::bpchar))) OR ((i_category = 'Women'::bpchar) AND ((i_color = 'rose'::bpchar) OR (i_color = 'royal'::bpchar)) AND ((i_units = 'Tbl'::bpchar) OR (i_units = 'Case'::bpchar)) AND ((i_size = 'medium'::bpchar) OR (i_size = 'economy'::bpchar))) OR ((i_category = 'Men'::bpchar) AND ((i_color = 'papaya'::bpchar) OR (i_color = 'navy'::bpchar)) AND ((i_units = 'Ounce'::bpchar) OR (i_units = 'Lb'::bpchar)) AND ((i_size = 'extra large'::bpchar) OR (i_size = 'large'::bpchar))) OR ((i_category = 'Men'::bpchar) AND ((i_color = 'coral'::bpchar) OR (i_color = 'olive'::bpchar)) AND ((i_units = 'N/A'::bpchar) OR (i_units = 'Carton'::bpchar)) AND ((i_size = 'petite'::bpchar) OR (i_size = 'N/A'::bpchar)))))",
@@ -102,9 +102,10 @@
         }
       ]
     },
-    "Planning Time": 0.584,
+    "Planning Time": 1.000,
     "Triggers": [
     ],
-    "Execution Time": 147.543
+    "Execution Time": 173.311
   }
 ]
+SET

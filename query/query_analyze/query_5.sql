@@ -1,3 +1,5 @@
+SET max_parallel_workers_per_gather TO 0;
+\o ../../analyze/analyze_5.json
 EXPLAIN (FORMAT JSON, ANALYZE)
 -- start query 1 in stream 5 using template query6.tpl
 select  a.ca_state state, count(*) cnt
@@ -25,3 +27,4 @@ select  a.ca_state state, count(*) cnt
  limit 100;
 
 -- end query 1 in stream 5 using template query6.tpl
+\echo query_5 processed

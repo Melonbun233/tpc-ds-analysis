@@ -1,3 +1,5 @@
+SET max_parallel_workers_per_gather TO 0;
+\o ../../analyze/analyze_71.json
 EXPLAIN (FORMAT JSON, ANALYZE)
 -- start query 1 in stream 71 using template query72.tpl
 select  i_item_desc
@@ -28,3 +30,4 @@ order by total_cnt desc, i_item_desc, w_warehouse_name, d_week_seq
 limit 100;
 
 -- end query 1 in stream 71 using template query72.tpl
+\echo query_71 processed

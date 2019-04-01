@@ -1,3 +1,5 @@
+SET max_parallel_workers_per_gather TO 0;
+\o ../../analyze/analyze_13.json
 EXPLAIN (FORMAT JSON, ANALYZE)
 -- start query 1 in stream 13 using template query14.tpl
 WITH cross_items AS
@@ -236,3 +238,4 @@ ORDER BY this_year.channel,
 LIMIT 100;
 
 -- end query 1 in stream 13 using template query14.tpl
+\echo query_13 processed

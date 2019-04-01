@@ -1,3 +1,5 @@
+SET max_parallel_workers_per_gather TO 0;
+\o ../../analyze/analyze_18.json
 EXPLAIN (FORMAT JSON, ANALYZE)
 -- start query 1 in stream 18 using template query19.tpl
 select  i_brand_id brand_id, i_brand brand, i_manufact_id, i_manufact,
@@ -24,3 +26,4 @@ select  i_brand_id brand_id, i_brand brand, i_manufact_id, i_manufact,
 limit 100 ;
 
 -- end query 1 in stream 18 using template query19.tpl
+\echo query_18 processed

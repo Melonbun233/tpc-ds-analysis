@@ -1,3 +1,5 @@
+SET max_parallel_workers_per_gather TO 0;
+\o ../../analyze/analyze_72.json
 EXPLAIN (FORMAT JSON, ANALYZE)
 -- start query 1 in stream 72 using template query73.tpl
 select c_last_name
@@ -27,3 +29,4 @@ select c_last_name
     order by cnt desc, c_last_name asc;
 
 -- end query 1 in stream 72 using template query73.tpl
+\echo query_72 processed

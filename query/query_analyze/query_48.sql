@@ -1,3 +1,5 @@
+SET max_parallel_workers_per_gather TO 0;
+\o ../../analyze/analyze_48.json
 EXPLAIN (FORMAT JSON, ANALYZE)
 -- start query 1 in stream 48 using template query49.tpl
 select  channel, item, return_ratio, return_rank, currency_rank from
@@ -128,3 +130,4 @@ select  channel, item, return_ratio, return_rank, currency_rank from
  limit 100;
 
 -- end query 1 in stream 48 using template query49.tpl
+\echo query_48 processed

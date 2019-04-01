@@ -1,3 +1,5 @@
+SET max_parallel_workers_per_gather TO 0;
+\o ../../analyze/analyze_84.json
 EXPLAIN (FORMAT JSON, ANALYZE)
 -- start query 1 in stream 84 using template query85.tpl
 select  substr(r_reason_desc,1,20)
@@ -83,3 +85,4 @@ order by substr(r_reason_desc,1,20)
 limit 100;
 
 -- end query 1 in stream 84 using template query85.tpl
+\echo query_84 processed
