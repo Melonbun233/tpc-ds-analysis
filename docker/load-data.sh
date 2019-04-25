@@ -31,7 +31,7 @@ else
     psql tpcds-$1 -U postgres -w -c "\\copy $table FROM '/var/lib/postgresql/data/tmp/$i' CSV DELIMITER '|'"
   done
   #remove temp directory
-  #rm -r /var/lib/postgresql/data/tmp
+  rm -r /var/lib/postgresql/data/tmp
   echo "Data loaded into database $db"
 
 fi
