@@ -1,15 +1,18 @@
 #append EXPLAIN (FORMAT JSON, ANALYZE) to all queries at their beginnings
 # Save the modified file in to the folder ../query_explain
+
+sf = 1000;
+
 for i in range(99):
-	old = open("query_{num}.sql".format(num = i), "r");
-	new = open("../query_analyze/query_{num}.sql".format(num = i), "w");
+	old = open("quereis_{sf}/query_{num}.sql".format(num = i, sf = sf), "r");
+	new = open("queries_{sf}/query_{num}.sql".format(num = i, sf = sf), "w");
 	lines = old.readlines();
 
 	#set non-parallet
 	new.write("SET max_parallel_workers_per_gather TO 0;\n");
 
 	# open log file
-	new.write("\\o ../../analyze/analyze_{num}.json\n".format(num = i));
+	new.write("\\o ../../../analyze/sf_{sf}/analyze_{num}.json\n".format(num = i, sf = sf));
 	new.write("EXPLAIN (FORMAT JSON, ANALYZE)\n"); 
 	for line in lines:
 		new.write(line);

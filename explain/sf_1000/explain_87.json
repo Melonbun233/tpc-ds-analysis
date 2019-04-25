@@ -1,0 +1,1175 @@
+[
+  {
+    "Plan": {
+      "Node Type": "Nested Loop",
+      "Parallel Aware": false,
+      "Join Type": "Inner",
+      "Startup Cost": 729815.48,
+      "Total Cost": 729815.71,
+      "Plan Rows": 1,
+      "Plan Width": 64,
+      "Inner Unique": false,
+      "Plans": [
+        {
+          "Node Type": "Nested Loop",
+          "Parent Relationship": "Outer",
+          "Parallel Aware": false,
+          "Join Type": "Inner",
+          "Startup Cost": 638583.80,
+          "Total Cost": 638584.00,
+          "Plan Rows": 1,
+          "Plan Width": 56,
+          "Inner Unique": false,
+          "Plans": [
+            {
+              "Node Type": "Nested Loop",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Join Type": "Inner",
+              "Startup Cost": 547353.58,
+              "Total Cost": 547353.75,
+              "Plan Rows": 1,
+              "Plan Width": 48,
+              "Inner Unique": false,
+              "Plans": [
+                {
+                  "Node Type": "Nested Loop",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Join Type": "Inner",
+                  "Startup Cost": 456121.77,
+                  "Total Cost": 456121.91,
+                  "Plan Rows": 1,
+                  "Plan Width": 40,
+                  "Inner Unique": false,
+                  "Plans": [
+                    {
+                      "Node Type": "Nested Loop",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "Join Type": "Inner",
+                      "Startup Cost": 364902.91,
+                      "Total Cost": 364903.02,
+                      "Plan Rows": 1,
+                      "Plan Width": 32,
+                      "Inner Unique": false,
+                      "Plans": [
+                        {
+                          "Node Type": "Nested Loop",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Join Type": "Inner",
+                          "Startup Cost": 273682.59,
+                          "Total Cost": 273682.67,
+                          "Plan Rows": 1,
+                          "Plan Width": 24,
+                          "Inner Unique": false,
+                          "Plans": [
+                            {
+                              "Node Type": "Nested Loop",
+                              "Parent Relationship": "Outer",
+                              "Parallel Aware": false,
+                              "Join Type": "Inner",
+                              "Startup Cost": 182453.59,
+                              "Total Cost": 182453.64,
+                              "Plan Rows": 1,
+                              "Plan Width": 16,
+                              "Inner Unique": false,
+                              "Plans": [
+                                {
+                                  "Node Type": "Aggregate",
+                                  "Strategy": "Plain",
+                                  "Partial Mode": "Simple",
+                                  "Parent Relationship": "Outer",
+                                  "Parallel Aware": false,
+                                  "Startup Cost": 91223.01,
+                                  "Total Cost": 91223.02,
+                                  "Plan Rows": 1,
+                                  "Plan Width": 8,
+                                  "Plans": [
+                                    {
+                                      "Node Type": "Hash Join",
+                                      "Parent Relationship": "Outer",
+                                      "Parallel Aware": false,
+                                      "Join Type": "Inner",
+                                      "Startup Cost": 2969.69,
+                                      "Total Cost": 91220.58,
+                                      "Plan Rows": 973,
+                                      "Plan Width": 0,
+                                      "Inner Unique": true,
+                                      "Hash Cond": "(store_sales.ss_store_sk = store.s_store_sk)",
+                                      "Plans": [
+                                        {
+                                          "Node Type": "Hash Join",
+                                          "Parent Relationship": "Outer",
+                                          "Parallel Aware": false,
+                                          "Join Type": "Inner",
+                                          "Startup Cost": 2968.52,
+                                          "Total Cost": 91176.52,
+                                          "Plan Rows": 12218,
+                                          "Plan Width": 4,
+                                          "Inner Unique": true,
+                                          "Hash Cond": "(store_sales.ss_hdemo_sk = household_demographics.hd_demo_sk)",
+                                          "Plans": [
+                                            {
+                                              "Node Type": "Hash Join",
+                                              "Parent Relationship": "Outer",
+                                              "Parallel Aware": false,
+                                              "Join Type": "Inner",
+                                              "Startup Cost": 2714.82,
+                                              "Total Cost": 90776.85,
+                                              "Plan Rows": 55578,
+                                              "Plan Width": 8,
+                                              "Inner Unique": true,
+                                              "Hash Cond": "(store_sales.ss_sold_time_sk = time_dim.t_time_sk)",
+                                              "Plans": [
+                                                {
+                                                  "Node Type": "Seq Scan",
+                                                  "Parent Relationship": "Outer",
+                                                  "Parallel Aware": false,
+                                                  "Relation Name": "store_sales",
+                                                  "Alias": "store_sales",
+                                                  "Startup Cost": 0.00,
+                                                  "Total Cost": 80500.49,
+                                                  "Plan Rows": 2880449,
+                                                  "Plan Width": 12
+                                                },
+                                                {
+                                                  "Node Type": "Hash",
+                                                  "Parent Relationship": "Inner",
+                                                  "Parallel Aware": false,
+                                                  "Startup Cost": 2693.00,
+                                                  "Total Cost": 2693.00,
+                                                  "Plan Rows": 1746,
+                                                  "Plan Width": 4,
+                                                  "Plans": [
+                                                    {
+                                                      "Node Type": "Seq Scan",
+                                                      "Parent Relationship": "Outer",
+                                                      "Parallel Aware": false,
+                                                      "Relation Name": "time_dim",
+                                                      "Alias": "time_dim",
+                                                      "Startup Cost": 0.00,
+                                                      "Total Cost": 2693.00,
+                                                      "Plan Rows": 1746,
+                                                      "Plan Width": 4,
+                                                      "Filter": "((t_minute >= 30) AND (t_hour = 8))"
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            },
+                                            {
+                                              "Node Type": "Hash",
+                                              "Parent Relationship": "Inner",
+                                              "Parallel Aware": false,
+                                              "Startup Cost": 233.00,
+                                              "Total Cost": 233.00,
+                                              "Plan Rows": 1656,
+                                              "Plan Width": 4,
+                                              "Plans": [
+                                                {
+                                                  "Node Type": "Seq Scan",
+                                                  "Parent Relationship": "Outer",
+                                                  "Parallel Aware": false,
+                                                  "Relation Name": "household_demographics",
+                                                  "Alias": "household_demographics",
+                                                  "Startup Cost": 0.00,
+                                                  "Total Cost": 233.00,
+                                                  "Plan Rows": 1656,
+                                                  "Plan Width": 4,
+                                                  "Filter": "(((hd_dep_count = 1) AND (hd_vehicle_count <= 3)) OR ((hd_dep_count = 0) AND (hd_vehicle_count <= 2)) OR ((hd_dep_count = 3) AND (hd_vehicle_count <= 5)))"
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "Node Type": "Hash",
+                                          "Parent Relationship": "Inner",
+                                          "Parallel Aware": false,
+                                          "Startup Cost": 1.15,
+                                          "Total Cost": 1.15,
+                                          "Plan Rows": 1,
+                                          "Plan Width": 4,
+                                          "Plans": [
+                                            {
+                                              "Node Type": "Seq Scan",
+                                              "Parent Relationship": "Outer",
+                                              "Parallel Aware": false,
+                                              "Relation Name": "store",
+                                              "Alias": "store",
+                                              "Startup Cost": 0.00,
+                                              "Total Cost": 1.15,
+                                              "Plan Rows": 1,
+                                              "Plan Width": 4,
+                                              "Filter": "((s_store_name)::text = 'ese'::text)"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "Node Type": "Aggregate",
+                                  "Strategy": "Plain",
+                                  "Partial Mode": "Simple",
+                                  "Parent Relationship": "Inner",
+                                  "Parallel Aware": false,
+                                  "Startup Cost": 91230.58,
+                                  "Total Cost": 91230.59,
+                                  "Plan Rows": 1,
+                                  "Plan Width": 8,
+                                  "Plans": [
+                                    {
+                                      "Node Type": "Hash Join",
+                                      "Parent Relationship": "Outer",
+                                      "Parallel Aware": false,
+                                      "Join Type": "Inner",
+                                      "Startup Cost": 2970.46,
+                                      "Total Cost": 91228.06,
+                                      "Plan Rows": 1007,
+                                      "Plan Width": 0,
+                                      "Inner Unique": true,
+                                      "Hash Cond": "(store_sales_1.ss_store_sk = store_1.s_store_sk)",
+                                      "Plans": [
+                                        {
+                                          "Node Type": "Hash Join",
+                                          "Parent Relationship": "Outer",
+                                          "Parallel Aware": false,
+                                          "Join Type": "Inner",
+                                          "Startup Cost": 2969.30,
+                                          "Total Cost": 91182.49,
+                                          "Plan Rows": 12652,
+                                          "Plan Width": 4,
+                                          "Inner Unique": true,
+                                          "Hash Cond": "(store_sales_1.ss_hdemo_sk = household_demographics_1.hd_demo_sk)",
+                                          "Plans": [
+                                            {
+                                              "Node Type": "Hash Join",
+                                              "Parent Relationship": "Outer",
+                                              "Parallel Aware": false,
+                                              "Join Type": "Inner",
+                                              "Startup Cost": 2715.60,
+                                              "Total Cost": 90777.62,
+                                              "Plan Rows": 57552,
+                                              "Plan Width": 8,
+                                              "Inner Unique": true,
+                                              "Hash Cond": "(store_sales_1.ss_sold_time_sk = time_dim_1.t_time_sk)",
+                                              "Plans": [
+                                                {
+                                                  "Node Type": "Seq Scan",
+                                                  "Parent Relationship": "Outer",
+                                                  "Parallel Aware": false,
+                                                  "Relation Name": "store_sales",
+                                                  "Alias": "store_sales_1",
+                                                  "Startup Cost": 0.00,
+                                                  "Total Cost": 80500.49,
+                                                  "Plan Rows": 2880449,
+                                                  "Plan Width": 12
+                                                },
+                                                {
+                                                  "Node Type": "Hash",
+                                                  "Parent Relationship": "Inner",
+                                                  "Parallel Aware": false,
+                                                  "Startup Cost": 2693.00,
+                                                  "Total Cost": 2693.00,
+                                                  "Plan Rows": 1808,
+                                                  "Plan Width": 4,
+                                                  "Plans": [
+                                                    {
+                                                      "Node Type": "Seq Scan",
+                                                      "Parent Relationship": "Outer",
+                                                      "Parallel Aware": false,
+                                                      "Relation Name": "time_dim",
+                                                      "Alias": "time_dim_1",
+                                                      "Startup Cost": 0.00,
+                                                      "Total Cost": 2693.00,
+                                                      "Plan Rows": 1808,
+                                                      "Plan Width": 4,
+                                                      "Filter": "((t_minute < 30) AND (t_hour = 9))"
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            },
+                                            {
+                                              "Node Type": "Hash",
+                                              "Parent Relationship": "Inner",
+                                              "Parallel Aware": false,
+                                              "Startup Cost": 233.00,
+                                              "Total Cost": 233.00,
+                                              "Plan Rows": 1656,
+                                              "Plan Width": 4,
+                                              "Plans": [
+                                                {
+                                                  "Node Type": "Seq Scan",
+                                                  "Parent Relationship": "Outer",
+                                                  "Parallel Aware": false,
+                                                  "Relation Name": "household_demographics",
+                                                  "Alias": "household_demographics_1",
+                                                  "Startup Cost": 0.00,
+                                                  "Total Cost": 233.00,
+                                                  "Plan Rows": 1656,
+                                                  "Plan Width": 4,
+                                                  "Filter": "(((hd_dep_count = 1) AND (hd_vehicle_count <= 3)) OR ((hd_dep_count = 0) AND (hd_vehicle_count <= 2)) OR ((hd_dep_count = 3) AND (hd_vehicle_count <= 5)))"
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "Node Type": "Hash",
+                                          "Parent Relationship": "Inner",
+                                          "Parallel Aware": false,
+                                          "Startup Cost": 1.15,
+                                          "Total Cost": 1.15,
+                                          "Plan Rows": 1,
+                                          "Plan Width": 4,
+                                          "Plans": [
+                                            {
+                                              "Node Type": "Seq Scan",
+                                              "Parent Relationship": "Outer",
+                                              "Parallel Aware": false,
+                                              "Relation Name": "store",
+                                              "Alias": "store_1",
+                                              "Startup Cost": 0.00,
+                                              "Total Cost": 1.15,
+                                              "Plan Rows": 1,
+                                              "Plan Width": 4,
+                                              "Filter": "((s_store_name)::text = 'ese'::text)"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "Node Type": "Aggregate",
+                              "Strategy": "Plain",
+                              "Partial Mode": "Simple",
+                              "Parent Relationship": "Inner",
+                              "Parallel Aware": false,
+                              "Startup Cost": 91229.00,
+                              "Total Cost": 91229.01,
+                              "Plan Rows": 1,
+                              "Plan Width": 8,
+                              "Plans": [
+                                {
+                                  "Node Type": "Hash Join",
+                                  "Parent Relationship": "Outer",
+                                  "Parallel Aware": false,
+                                  "Join Type": "Inner",
+                                  "Startup Cost": 2970.30,
+                                  "Total Cost": 91226.50,
+                                  "Plan Rows": 1000,
+                                  "Plan Width": 0,
+                                  "Inner Unique": true,
+                                  "Hash Cond": "(store_sales_2.ss_store_sk = store_2.s_store_sk)",
+                                  "Plans": [
+                                    {
+                                      "Node Type": "Hash Join",
+                                      "Parent Relationship": "Outer",
+                                      "Parallel Aware": false,
+                                      "Join Type": "Inner",
+                                      "Startup Cost": 2969.14,
+                                      "Total Cost": 91181.24,
+                                      "Plan Rows": 12561,
+                                      "Plan Width": 4,
+                                      "Inner Unique": true,
+                                      "Hash Cond": "(store_sales_2.ss_hdemo_sk = household_demographics_2.hd_demo_sk)",
+                                      "Plans": [
+                                        {
+                                          "Node Type": "Hash Join",
+                                          "Parent Relationship": "Outer",
+                                          "Parallel Aware": false,
+                                          "Join Type": "Inner",
+                                          "Startup Cost": 2715.44,
+                                          "Total Cost": 90777.46,
+                                          "Plan Rows": 57138,
+                                          "Plan Width": 8,
+                                          "Inner Unique": true,
+                                          "Hash Cond": "(store_sales_2.ss_sold_time_sk = time_dim_2.t_time_sk)",
+                                          "Plans": [
+                                            {
+                                              "Node Type": "Seq Scan",
+                                              "Parent Relationship": "Outer",
+                                              "Parallel Aware": false,
+                                              "Relation Name": "store_sales",
+                                              "Alias": "store_sales_2",
+                                              "Startup Cost": 0.00,
+                                              "Total Cost": 80500.49,
+                                              "Plan Rows": 2880449,
+                                              "Plan Width": 12
+                                            },
+                                            {
+                                              "Node Type": "Hash",
+                                              "Parent Relationship": "Inner",
+                                              "Parallel Aware": false,
+                                              "Startup Cost": 2693.00,
+                                              "Total Cost": 2693.00,
+                                              "Plan Rows": 1795,
+                                              "Plan Width": 4,
+                                              "Plans": [
+                                                {
+                                                  "Node Type": "Seq Scan",
+                                                  "Parent Relationship": "Outer",
+                                                  "Parallel Aware": false,
+                                                  "Relation Name": "time_dim",
+                                                  "Alias": "time_dim_2",
+                                                  "Startup Cost": 0.00,
+                                                  "Total Cost": 2693.00,
+                                                  "Plan Rows": 1795,
+                                                  "Plan Width": 4,
+                                                  "Filter": "((t_minute >= 30) AND (t_hour = 9))"
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "Node Type": "Hash",
+                                          "Parent Relationship": "Inner",
+                                          "Parallel Aware": false,
+                                          "Startup Cost": 233.00,
+                                          "Total Cost": 233.00,
+                                          "Plan Rows": 1656,
+                                          "Plan Width": 4,
+                                          "Plans": [
+                                            {
+                                              "Node Type": "Seq Scan",
+                                              "Parent Relationship": "Outer",
+                                              "Parallel Aware": false,
+                                              "Relation Name": "household_demographics",
+                                              "Alias": "household_demographics_2",
+                                              "Startup Cost": 0.00,
+                                              "Total Cost": 233.00,
+                                              "Plan Rows": 1656,
+                                              "Plan Width": 4,
+                                              "Filter": "(((hd_dep_count = 1) AND (hd_vehicle_count <= 3)) OR ((hd_dep_count = 0) AND (hd_vehicle_count <= 2)) OR ((hd_dep_count = 3) AND (hd_vehicle_count <= 5)))"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "Node Type": "Hash",
+                                      "Parent Relationship": "Inner",
+                                      "Parallel Aware": false,
+                                      "Startup Cost": 1.15,
+                                      "Total Cost": 1.15,
+                                      "Plan Rows": 1,
+                                      "Plan Width": 4,
+                                      "Plans": [
+                                        {
+                                          "Node Type": "Seq Scan",
+                                          "Parent Relationship": "Outer",
+                                          "Parallel Aware": false,
+                                          "Relation Name": "store",
+                                          "Alias": "store_2",
+                                          "Startup Cost": 0.00,
+                                          "Total Cost": 1.15,
+                                          "Plan Rows": 1,
+                                          "Plan Width": 4,
+                                          "Filter": "((s_store_name)::text = 'ese'::text)"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "Node Type": "Aggregate",
+                          "Strategy": "Plain",
+                          "Partial Mode": "Simple",
+                          "Parent Relationship": "Inner",
+                          "Parallel Aware": false,
+                          "Startup Cost": 91220.32,
+                          "Total Cost": 91220.33,
+                          "Plan Rows": 1,
+                          "Plan Width": 8,
+                          "Plans": [
+                            {
+                              "Node Type": "Hash Join",
+                              "Parent Relationship": "Outer",
+                              "Parallel Aware": false,
+                              "Join Type": "Inner",
+                              "Startup Cost": 2969.41,
+                              "Total Cost": 91217.92,
+                              "Plan Rows": 960,
+                              "Plan Width": 0,
+                              "Inner Unique": true,
+                              "Hash Cond": "(store_sales_3.ss_store_sk = store_3.s_store_sk)",
+                              "Plans": [
+                                {
+                                  "Node Type": "Hash Join",
+                                  "Parent Relationship": "Outer",
+                                  "Parallel Aware": false,
+                                  "Join Type": "Inner",
+                                  "Startup Cost": 2968.25,
+                                  "Total Cost": 91174.41,
+                                  "Plan Rows": 12064,
+                                  "Plan Width": 4,
+                                  "Inner Unique": true,
+                                  "Hash Cond": "(store_sales_3.ss_hdemo_sk = household_demographics_3.hd_demo_sk)",
+                                  "Plans": [
+                                    {
+                                      "Node Type": "Hash Join",
+                                      "Parent Relationship": "Outer",
+                                      "Parallel Aware": false,
+                                      "Join Type": "Inner",
+                                      "Startup Cost": 2714.55,
+                                      "Total Cost": 90776.57,
+                                      "Plan Rows": 54878,
+                                      "Plan Width": 8,
+                                      "Inner Unique": true,
+                                      "Hash Cond": "(store_sales_3.ss_sold_time_sk = time_dim_3.t_time_sk)",
+                                      "Plans": [
+                                        {
+                                          "Node Type": "Seq Scan",
+                                          "Parent Relationship": "Outer",
+                                          "Parallel Aware": false,
+                                          "Relation Name": "store_sales",
+                                          "Alias": "store_sales_3",
+                                          "Startup Cost": 0.00,
+                                          "Total Cost": 80500.49,
+                                          "Plan Rows": 2880449,
+                                          "Plan Width": 12
+                                        },
+                                        {
+                                          "Node Type": "Hash",
+                                          "Parent Relationship": "Inner",
+                                          "Parallel Aware": false,
+                                          "Startup Cost": 2693.00,
+                                          "Total Cost": 2693.00,
+                                          "Plan Rows": 1724,
+                                          "Plan Width": 4,
+                                          "Plans": [
+                                            {
+                                              "Node Type": "Seq Scan",
+                                              "Parent Relationship": "Outer",
+                                              "Parallel Aware": false,
+                                              "Relation Name": "time_dim",
+                                              "Alias": "time_dim_3",
+                                              "Startup Cost": 0.00,
+                                              "Total Cost": 2693.00,
+                                              "Plan Rows": 1724,
+                                              "Plan Width": 4,
+                                              "Filter": "((t_minute < 30) AND (t_hour = 10))"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "Node Type": "Hash",
+                                      "Parent Relationship": "Inner",
+                                      "Parallel Aware": false,
+                                      "Startup Cost": 233.00,
+                                      "Total Cost": 233.00,
+                                      "Plan Rows": 1656,
+                                      "Plan Width": 4,
+                                      "Plans": [
+                                        {
+                                          "Node Type": "Seq Scan",
+                                          "Parent Relationship": "Outer",
+                                          "Parallel Aware": false,
+                                          "Relation Name": "household_demographics",
+                                          "Alias": "household_demographics_3",
+                                          "Startup Cost": 0.00,
+                                          "Total Cost": 233.00,
+                                          "Plan Rows": 1656,
+                                          "Plan Width": 4,
+                                          "Filter": "(((hd_dep_count = 1) AND (hd_vehicle_count <= 3)) OR ((hd_dep_count = 0) AND (hd_vehicle_count <= 2)) OR ((hd_dep_count = 3) AND (hd_vehicle_count <= 5)))"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "Node Type": "Hash",
+                                  "Parent Relationship": "Inner",
+                                  "Parallel Aware": false,
+                                  "Startup Cost": 1.15,
+                                  "Total Cost": 1.15,
+                                  "Plan Rows": 1,
+                                  "Plan Width": 4,
+                                  "Plans": [
+                                    {
+                                      "Node Type": "Seq Scan",
+                                      "Parent Relationship": "Outer",
+                                      "Parallel Aware": false,
+                                      "Relation Name": "store",
+                                      "Alias": "store_3",
+                                      "Startup Cost": 0.00,
+                                      "Total Cost": 1.15,
+                                      "Plan Rows": 1,
+                                      "Plan Width": 4,
+                                      "Filter": "((s_store_name)::text = 'ese'::text)"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "Node Type": "Aggregate",
+                      "Strategy": "Plain",
+                      "Partial Mode": "Simple",
+                      "Parent Relationship": "Inner",
+                      "Parallel Aware": false,
+                      "Startup Cost": 91218.86,
+                      "Total Cost": 91218.87,
+                      "Plan Rows": 1,
+                      "Plan Width": 8,
+                      "Plans": [
+                        {
+                          "Node Type": "Hash Join",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Join Type": "Inner",
+                          "Startup Cost": 2969.26,
+                          "Total Cost": 91216.48,
+                          "Plan Rows": 954,
+                          "Plan Width": 0,
+                          "Inner Unique": true,
+                          "Hash Cond": "(store_sales_4.ss_store_sk = store_4.s_store_sk)",
+                          "Plans": [
+                            {
+                              "Node Type": "Hash Join",
+                              "Parent Relationship": "Outer",
+                              "Parallel Aware": false,
+                              "Join Type": "Inner",
+                              "Startup Cost": 2968.10,
+                              "Total Cost": 91173.25,
+                              "Plan Rows": 11980,
+                              "Plan Width": 4,
+                              "Inner Unique": true,
+                              "Hash Cond": "(store_sales_4.ss_hdemo_sk = household_demographics_4.hd_demo_sk)",
+                              "Plans": [
+                                {
+                                  "Node Type": "Hash Join",
+                                  "Parent Relationship": "Outer",
+                                  "Parallel Aware": false,
+                                  "Join Type": "Inner",
+                                  "Startup Cost": 2714.40,
+                                  "Total Cost": 90776.42,
+                                  "Plan Rows": 54496,
+                                  "Plan Width": 8,
+                                  "Inner Unique": true,
+                                  "Hash Cond": "(store_sales_4.ss_sold_time_sk = time_dim_4.t_time_sk)",
+                                  "Plans": [
+                                    {
+                                      "Node Type": "Seq Scan",
+                                      "Parent Relationship": "Outer",
+                                      "Parallel Aware": false,
+                                      "Relation Name": "store_sales",
+                                      "Alias": "store_sales_4",
+                                      "Startup Cost": 0.00,
+                                      "Total Cost": 80500.49,
+                                      "Plan Rows": 2880449,
+                                      "Plan Width": 12
+                                    },
+                                    {
+                                      "Node Type": "Hash",
+                                      "Parent Relationship": "Inner",
+                                      "Parallel Aware": false,
+                                      "Startup Cost": 2693.00,
+                                      "Total Cost": 2693.00,
+                                      "Plan Rows": 1712,
+                                      "Plan Width": 4,
+                                      "Plans": [
+                                        {
+                                          "Node Type": "Seq Scan",
+                                          "Parent Relationship": "Outer",
+                                          "Parallel Aware": false,
+                                          "Relation Name": "time_dim",
+                                          "Alias": "time_dim_4",
+                                          "Startup Cost": 0.00,
+                                          "Total Cost": 2693.00,
+                                          "Plan Rows": 1712,
+                                          "Plan Width": 4,
+                                          "Filter": "((t_minute >= 30) AND (t_hour = 10))"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "Node Type": "Hash",
+                                  "Parent Relationship": "Inner",
+                                  "Parallel Aware": false,
+                                  "Startup Cost": 233.00,
+                                  "Total Cost": 233.00,
+                                  "Plan Rows": 1656,
+                                  "Plan Width": 4,
+                                  "Plans": [
+                                    {
+                                      "Node Type": "Seq Scan",
+                                      "Parent Relationship": "Outer",
+                                      "Parallel Aware": false,
+                                      "Relation Name": "household_demographics",
+                                      "Alias": "household_demographics_4",
+                                      "Startup Cost": 0.00,
+                                      "Total Cost": 233.00,
+                                      "Plan Rows": 1656,
+                                      "Plan Width": 4,
+                                      "Filter": "(((hd_dep_count = 1) AND (hd_vehicle_count <= 3)) OR ((hd_dep_count = 0) AND (hd_vehicle_count <= 2)) OR ((hd_dep_count = 3) AND (hd_vehicle_count <= 5)))"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "Node Type": "Hash",
+                              "Parent Relationship": "Inner",
+                              "Parallel Aware": false,
+                              "Startup Cost": 1.15,
+                              "Total Cost": 1.15,
+                              "Plan Rows": 1,
+                              "Plan Width": 4,
+                              "Plans": [
+                                {
+                                  "Node Type": "Seq Scan",
+                                  "Parent Relationship": "Outer",
+                                  "Parallel Aware": false,
+                                  "Relation Name": "store",
+                                  "Alias": "store_4",
+                                  "Startup Cost": 0.00,
+                                  "Total Cost": 1.15,
+                                  "Plan Rows": 1,
+                                  "Plan Width": 4,
+                                  "Filter": "((s_store_name)::text = 'ese'::text)"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "Node Type": "Aggregate",
+                  "Strategy": "Plain",
+                  "Partial Mode": "Simple",
+                  "Parent Relationship": "Inner",
+                  "Parallel Aware": false,
+                  "Startup Cost": 91231.81,
+                  "Total Cost": 91231.82,
+                  "Plan Rows": 1,
+                  "Plan Width": 8,
+                  "Plans": [
+                    {
+                      "Node Type": "Hash Join",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "Join Type": "Inner",
+                      "Startup Cost": 2970.59,
+                      "Total Cost": 91229.27,
+                      "Plan Rows": 1013,
+                      "Plan Width": 0,
+                      "Inner Unique": true,
+                      "Hash Cond": "(store_sales_5.ss_store_sk = store_5.s_store_sk)",
+                      "Plans": [
+                        {
+                          "Node Type": "Hash Join",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Join Type": "Inner",
+                          "Startup Cost": 2969.42,
+                          "Total Cost": 91183.45,
+                          "Plan Rows": 12722,
+                          "Plan Width": 4,
+                          "Inner Unique": true,
+                          "Hash Cond": "(store_sales_5.ss_hdemo_sk = household_demographics_5.hd_demo_sk)",
+                          "Plans": [
+                            {
+                              "Node Type": "Hash Join",
+                              "Parent Relationship": "Outer",
+                              "Parallel Aware": false,
+                              "Join Type": "Inner",
+                              "Startup Cost": 2715.72,
+                              "Total Cost": 90777.75,
+                              "Plan Rows": 57870,
+                              "Plan Width": 8,
+                              "Inner Unique": true,
+                              "Hash Cond": "(store_sales_5.ss_sold_time_sk = time_dim_5.t_time_sk)",
+                              "Plans": [
+                                {
+                                  "Node Type": "Seq Scan",
+                                  "Parent Relationship": "Outer",
+                                  "Parallel Aware": false,
+                                  "Relation Name": "store_sales",
+                                  "Alias": "store_sales_5",
+                                  "Startup Cost": 0.00,
+                                  "Total Cost": 80500.49,
+                                  "Plan Rows": 2880449,
+                                  "Plan Width": 12
+                                },
+                                {
+                                  "Node Type": "Hash",
+                                  "Parent Relationship": "Inner",
+                                  "Parallel Aware": false,
+                                  "Startup Cost": 2693.00,
+                                  "Total Cost": 2693.00,
+                                  "Plan Rows": 1818,
+                                  "Plan Width": 4,
+                                  "Plans": [
+                                    {
+                                      "Node Type": "Seq Scan",
+                                      "Parent Relationship": "Outer",
+                                      "Parallel Aware": false,
+                                      "Relation Name": "time_dim",
+                                      "Alias": "time_dim_5",
+                                      "Startup Cost": 0.00,
+                                      "Total Cost": 2693.00,
+                                      "Plan Rows": 1818,
+                                      "Plan Width": 4,
+                                      "Filter": "((t_minute < 30) AND (t_hour = 11))"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "Node Type": "Hash",
+                              "Parent Relationship": "Inner",
+                              "Parallel Aware": false,
+                              "Startup Cost": 233.00,
+                              "Total Cost": 233.00,
+                              "Plan Rows": 1656,
+                              "Plan Width": 4,
+                              "Plans": [
+                                {
+                                  "Node Type": "Seq Scan",
+                                  "Parent Relationship": "Outer",
+                                  "Parallel Aware": false,
+                                  "Relation Name": "household_demographics",
+                                  "Alias": "household_demographics_5",
+                                  "Startup Cost": 0.00,
+                                  "Total Cost": 233.00,
+                                  "Plan Rows": 1656,
+                                  "Plan Width": 4,
+                                  "Filter": "(((hd_dep_count = 1) AND (hd_vehicle_count <= 3)) OR ((hd_dep_count = 0) AND (hd_vehicle_count <= 2)) OR ((hd_dep_count = 3) AND (hd_vehicle_count <= 5)))"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "Node Type": "Hash",
+                          "Parent Relationship": "Inner",
+                          "Parallel Aware": false,
+                          "Startup Cost": 1.15,
+                          "Total Cost": 1.15,
+                          "Plan Rows": 1,
+                          "Plan Width": 4,
+                          "Plans": [
+                            {
+                              "Node Type": "Seq Scan",
+                              "Parent Relationship": "Outer",
+                              "Parallel Aware": false,
+                              "Relation Name": "store",
+                              "Alias": "store_5",
+                              "Startup Cost": 0.00,
+                              "Total Cost": 1.15,
+                              "Plan Rows": 1,
+                              "Plan Width": 4,
+                              "Filter": "((s_store_name)::text = 'ese'::text)"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "Node Type": "Aggregate",
+              "Strategy": "Plain",
+              "Partial Mode": "Simple",
+              "Parent Relationship": "Inner",
+              "Parallel Aware": false,
+              "Startup Cost": 91230.22,
+              "Total Cost": 91230.23,
+              "Plan Rows": 1,
+              "Plan Width": 8,
+              "Plans": [
+                {
+                  "Node Type": "Hash Join",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Join Type": "Inner",
+                  "Startup Cost": 2970.42,
+                  "Total Cost": 91227.71,
+                  "Plan Rows": 1006,
+                  "Plan Width": 0,
+                  "Inner Unique": true,
+                  "Hash Cond": "(store_sales_6.ss_store_sk = store_6.s_store_sk)",
+                  "Plans": [
+                    {
+                      "Node Type": "Hash Join",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "Join Type": "Inner",
+                      "Startup Cost": 2969.26,
+                      "Total Cost": 91182.20,
+                      "Plan Rows": 12631,
+                      "Plan Width": 4,
+                      "Inner Unique": true,
+                      "Hash Cond": "(store_sales_6.ss_hdemo_sk = household_demographics_6.hd_demo_sk)",
+                      "Plans": [
+                        {
+                          "Node Type": "Hash Join",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Join Type": "Inner",
+                          "Startup Cost": 2715.56,
+                          "Total Cost": 90777.59,
+                          "Plan Rows": 57456,
+                          "Plan Width": 8,
+                          "Inner Unique": true,
+                          "Hash Cond": "(store_sales_6.ss_sold_time_sk = time_dim_6.t_time_sk)",
+                          "Plans": [
+                            {
+                              "Node Type": "Seq Scan",
+                              "Parent Relationship": "Outer",
+                              "Parallel Aware": false,
+                              "Relation Name": "store_sales",
+                              "Alias": "store_sales_6",
+                              "Startup Cost": 0.00,
+                              "Total Cost": 80500.49,
+                              "Plan Rows": 2880449,
+                              "Plan Width": 12
+                            },
+                            {
+                              "Node Type": "Hash",
+                              "Parent Relationship": "Inner",
+                              "Parallel Aware": false,
+                              "Startup Cost": 2693.00,
+                              "Total Cost": 2693.00,
+                              "Plan Rows": 1805,
+                              "Plan Width": 4,
+                              "Plans": [
+                                {
+                                  "Node Type": "Seq Scan",
+                                  "Parent Relationship": "Outer",
+                                  "Parallel Aware": false,
+                                  "Relation Name": "time_dim",
+                                  "Alias": "time_dim_6",
+                                  "Startup Cost": 0.00,
+                                  "Total Cost": 2693.00,
+                                  "Plan Rows": 1805,
+                                  "Plan Width": 4,
+                                  "Filter": "((t_minute >= 30) AND (t_hour = 11))"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "Node Type": "Hash",
+                          "Parent Relationship": "Inner",
+                          "Parallel Aware": false,
+                          "Startup Cost": 233.00,
+                          "Total Cost": 233.00,
+                          "Plan Rows": 1656,
+                          "Plan Width": 4,
+                          "Plans": [
+                            {
+                              "Node Type": "Seq Scan",
+                              "Parent Relationship": "Outer",
+                              "Parallel Aware": false,
+                              "Relation Name": "household_demographics",
+                              "Alias": "household_demographics_6",
+                              "Startup Cost": 0.00,
+                              "Total Cost": 233.00,
+                              "Plan Rows": 1656,
+                              "Plan Width": 4,
+                              "Filter": "(((hd_dep_count = 1) AND (hd_vehicle_count <= 3)) OR ((hd_dep_count = 0) AND (hd_vehicle_count <= 2)) OR ((hd_dep_count = 3) AND (hd_vehicle_count <= 5)))"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "Node Type": "Hash",
+                      "Parent Relationship": "Inner",
+                      "Parallel Aware": false,
+                      "Startup Cost": 1.15,
+                      "Total Cost": 1.15,
+                      "Plan Rows": 1,
+                      "Plan Width": 4,
+                      "Plans": [
+                        {
+                          "Node Type": "Seq Scan",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Relation Name": "store",
+                          "Alias": "store_6",
+                          "Startup Cost": 0.00,
+                          "Total Cost": 1.15,
+                          "Plan Rows": 1,
+                          "Plan Width": 4,
+                          "Filter": "((s_store_name)::text = 'ese'::text)"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Node Type": "Aggregate",
+          "Strategy": "Plain",
+          "Partial Mode": "Simple",
+          "Parent Relationship": "Inner",
+          "Parallel Aware": false,
+          "Startup Cost": 91231.68,
+          "Total Cost": 91231.69,
+          "Plan Rows": 1,
+          "Plan Width": 8,
+          "Plans": [
+            {
+              "Node Type": "Hash Join",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Join Type": "Inner",
+              "Startup Cost": 2970.57,
+              "Total Cost": 91229.15,
+              "Plan Rows": 1012,
+              "Plan Width": 0,
+              "Inner Unique": true,
+              "Hash Cond": "(store_sales_7.ss_store_sk = store_7.s_store_sk)",
+              "Plans": [
+                {
+                  "Node Type": "Hash Join",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Join Type": "Inner",
+                  "Startup Cost": 2969.41,
+                  "Total Cost": 91183.35,
+                  "Plan Rows": 12715,
+                  "Plan Width": 4,
+                  "Inner Unique": true,
+                  "Hash Cond": "(store_sales_7.ss_hdemo_sk = household_demographics_7.hd_demo_sk)",
+                  "Plans": [
+                    {
+                      "Node Type": "Hash Join",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "Join Type": "Inner",
+                      "Startup Cost": 2715.71,
+                      "Total Cost": 90777.74,
+                      "Plan Rows": 57838,
+                      "Plan Width": 8,
+                      "Inner Unique": true,
+                      "Hash Cond": "(store_sales_7.ss_sold_time_sk = time_dim_7.t_time_sk)",
+                      "Plans": [
+                        {
+                          "Node Type": "Seq Scan",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Relation Name": "store_sales",
+                          "Alias": "store_sales_7",
+                          "Startup Cost": 0.00,
+                          "Total Cost": 80500.49,
+                          "Plan Rows": 2880449,
+                          "Plan Width": 12
+                        },
+                        {
+                          "Node Type": "Hash",
+                          "Parent Relationship": "Inner",
+                          "Parallel Aware": false,
+                          "Startup Cost": 2693.00,
+                          "Total Cost": 2693.00,
+                          "Plan Rows": 1817,
+                          "Plan Width": 4,
+                          "Plans": [
+                            {
+                              "Node Type": "Seq Scan",
+                              "Parent Relationship": "Outer",
+                              "Parallel Aware": false,
+                              "Relation Name": "time_dim",
+                              "Alias": "time_dim_7",
+                              "Startup Cost": 0.00,
+                              "Total Cost": 2693.00,
+                              "Plan Rows": 1817,
+                              "Plan Width": 4,
+                              "Filter": "((t_minute < 30) AND (t_hour = 12))"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "Node Type": "Hash",
+                      "Parent Relationship": "Inner",
+                      "Parallel Aware": false,
+                      "Startup Cost": 233.00,
+                      "Total Cost": 233.00,
+                      "Plan Rows": 1656,
+                      "Plan Width": 4,
+                      "Plans": [
+                        {
+                          "Node Type": "Seq Scan",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Relation Name": "household_demographics",
+                          "Alias": "household_demographics_7",
+                          "Startup Cost": 0.00,
+                          "Total Cost": 233.00,
+                          "Plan Rows": 1656,
+                          "Plan Width": 4,
+                          "Filter": "(((hd_dep_count = 1) AND (hd_vehicle_count <= 3)) OR ((hd_dep_count = 0) AND (hd_vehicle_count <= 2)) OR ((hd_dep_count = 3) AND (hd_vehicle_count <= 5)))"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "Node Type": "Hash",
+                  "Parent Relationship": "Inner",
+                  "Parallel Aware": false,
+                  "Startup Cost": 1.15,
+                  "Total Cost": 1.15,
+                  "Plan Rows": 1,
+                  "Plan Width": 4,
+                  "Plans": [
+                    {
+                      "Node Type": "Seq Scan",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "Relation Name": "store",
+                      "Alias": "store_7",
+                      "Startup Cost": 0.00,
+                      "Total Cost": 1.15,
+                      "Plan Rows": 1,
+                      "Plan Width": 4,
+                      "Filter": "((s_store_name)::text = 'ese'::text)"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+]
+SET

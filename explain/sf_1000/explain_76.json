@@ -1,0 +1,743 @@
+[
+  {
+    "Plan": {
+      "Node Type": "Limit",
+      "Parallel Aware": false,
+      "Startup Cost": 202523.37,
+      "Total Cost": 202525.87,
+      "Plan Rows": 100,
+      "Plan Width": 132,
+      "Plans": [
+        {
+          "Node Type": "Aggregate",
+          "Strategy": "Sorted",
+          "Partial Mode": "Simple",
+          "Parent Relationship": "InitPlan",
+          "Subplan Name": "CTE ss",
+          "Parallel Aware": false,
+          "Startup Cost": 2501.26,
+          "Total Cost": 90797.05,
+          "Plan Rows": 12,
+          "Plan Width": 68,
+          "Group Key": ["store.s_store_sk"],
+          "Plans": [
+            {
+              "Node Type": "Nested Loop",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Join Type": "Inner",
+              "Startup Cost": 2501.26,
+              "Total Cost": 90788.51,
+              "Plan Rows": 1115,
+              "Plan Width": 16,
+              "Inner Unique": false,
+              "Join Filter": "(store_sales.ss_store_sk = store.s_store_sk)",
+              "Plans": [
+                {
+                  "Node Type": "Index Only Scan",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Scan Direction": "Forward",
+                  "Index Name": "store_pkey",
+                  "Relation Name": "store",
+                  "Alias": "store",
+                  "Startup Cost": 0.14,
+                  "Total Cost": 12.31,
+                  "Plan Rows": 12,
+                  "Plan Width": 4
+                },
+                {
+                  "Node Type": "Materialize",
+                  "Parent Relationship": "Inner",
+                  "Parallel Aware": false,
+                  "Startup Cost": 2501.12,
+                  "Total Cost": 90569.05,
+                  "Plan Rows": 1167,
+                  "Plan Width": 16,
+                  "Plans": [
+                    {
+                      "Node Type": "Hash Join",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "Join Type": "Inner",
+                      "Startup Cost": 2501.12,
+                      "Total Cost": 90563.21,
+                      "Plan Rows": 1167,
+                      "Plan Width": 16,
+                      "Inner Unique": true,
+                      "Hash Cond": "(store_sales.ss_sold_date_sk = date_dim.d_date_sk)",
+                      "Plans": [
+                        {
+                          "Node Type": "Seq Scan",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Relation Name": "store_sales",
+                          "Alias": "store_sales",
+                          "Startup Cost": 0.00,
+                          "Total Cost": 80500.49,
+                          "Plan Rows": 2880449,
+                          "Plan Width": 20
+                        },
+                        {
+                          "Node Type": "Hash",
+                          "Parent Relationship": "Inner",
+                          "Parallel Aware": false,
+                          "Startup Cost": 2500.73,
+                          "Total Cost": 2500.73,
+                          "Plan Rows": 31,
+                          "Plan Width": 4,
+                          "Plans": [
+                            {
+                              "Node Type": "Seq Scan",
+                              "Parent Relationship": "Outer",
+                              "Parallel Aware": false,
+                              "Relation Name": "date_dim",
+                              "Alias": "date_dim",
+                              "Startup Cost": 0.00,
+                              "Total Cost": 2500.73,
+                              "Plan Rows": 31,
+                              "Plan Width": 4,
+                              "Filter": "((d_date >= '2000-08-06'::date) AND (d_date <= '2000-09-05'::date))"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Node Type": "Aggregate",
+          "Strategy": "Sorted",
+          "Partial Mode": "Simple",
+          "Parent Relationship": "InitPlan",
+          "Subplan Name": "CTE sr",
+          "Parallel Aware": false,
+          "Startup Cost": 2501.26,
+          "Total Cost": 10956.92,
+          "Plan Rows": 12,
+          "Plan Width": 68,
+          "Group Key": ["store_1.s_store_sk"],
+          "Plans": [
+            {
+              "Node Type": "Nested Loop",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Join Type": "Inner",
+              "Startup Cost": 2501.26,
+              "Total Cost": 10955.88,
+              "Plan Rows": 114,
+              "Plan Width": 16,
+              "Inner Unique": false,
+              "Join Filter": "(store_returns.sr_store_sk = store_1.s_store_sk)",
+              "Plans": [
+                {
+                  "Node Type": "Index Only Scan",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Scan Direction": "Forward",
+                  "Index Name": "store_pkey",
+                  "Relation Name": "store",
+                  "Alias": "store_1",
+                  "Startup Cost": 0.14,
+                  "Total Cost": 12.31,
+                  "Plan Rows": 12,
+                  "Plan Width": 4
+                },
+                {
+                  "Node Type": "Materialize",
+                  "Parent Relationship": "Inner",
+                  "Parallel Aware": false,
+                  "Startup Cost": 2501.12,
+                  "Total Cost": 10922.62,
+                  "Plan Rows": 118,
+                  "Plan Width": 16,
+                  "Plans": [
+                    {
+                      "Node Type": "Hash Join",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "Join Type": "Inner",
+                      "Startup Cost": 2501.12,
+                      "Total Cost": 10922.03,
+                      "Plan Rows": 118,
+                      "Plan Width": 16,
+                      "Inner Unique": true,
+                      "Hash Cond": "(store_returns.sr_returned_date_sk = date_dim_1.d_date_sk)",
+                      "Plans": [
+                        {
+                          "Node Type": "Seq Scan",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Relation Name": "store_returns",
+                          "Alias": "store_returns",
+                          "Startup Cost": 0.00,
+                          "Total Cost": 7666.14,
+                          "Plan Rows": 287514,
+                          "Plan Width": 20
+                        },
+                        {
+                          "Node Type": "Hash",
+                          "Parent Relationship": "Inner",
+                          "Parallel Aware": false,
+                          "Startup Cost": 2500.73,
+                          "Total Cost": 2500.73,
+                          "Plan Rows": 31,
+                          "Plan Width": 4,
+                          "Plans": [
+                            {
+                              "Node Type": "Seq Scan",
+                              "Parent Relationship": "Outer",
+                              "Parallel Aware": false,
+                              "Relation Name": "date_dim",
+                              "Alias": "date_dim_1",
+                              "Startup Cost": 0.00,
+                              "Total Cost": 2500.73,
+                              "Plan Rows": 31,
+                              "Plan Width": 4,
+                              "Filter": "((d_date >= '2000-08-06'::date) AND (d_date <= '2000-09-05'::date))"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Node Type": "Aggregate",
+          "Strategy": "Sorted",
+          "Partial Mode": "Simple",
+          "Parent Relationship": "InitPlan",
+          "Subplan Name": "CTE cs",
+          "Parallel Aware": false,
+          "Startup Cost": 58135.95,
+          "Total Cost": 58142.13,
+          "Plan Rows": 6,
+          "Plan Width": 68,
+          "Group Key": ["catalog_sales.cs_call_center_sk"],
+          "Plans": [
+            {
+              "Node Type": "Sort",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Startup Cost": 58135.95,
+              "Total Cost": 58137.47,
+              "Plan Rows": 609,
+              "Plan Width": 16,
+              "Sort Key": ["catalog_sales.cs_call_center_sk"],
+              "Plans": [
+                {
+                  "Node Type": "Hash Join",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Join Type": "Inner",
+                  "Startup Cost": 2501.12,
+                  "Total Cost": 58107.78,
+                  "Plan Rows": 609,
+                  "Plan Width": 16,
+                  "Inner Unique": true,
+                  "Hash Cond": "(catalog_sales.cs_sold_date_sk = date_dim_2.d_date_sk)",
+                  "Plans": [
+                    {
+                      "Node Type": "Seq Scan",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "Relation Name": "catalog_sales",
+                      "Alias": "catalog_sales",
+                      "Startup Cost": 0.00,
+                      "Total Cost": 51821.98,
+                      "Plan Rows": 1441698,
+                      "Plan Width": 20
+                    },
+                    {
+                      "Node Type": "Hash",
+                      "Parent Relationship": "Inner",
+                      "Parallel Aware": false,
+                      "Startup Cost": 2500.73,
+                      "Total Cost": 2500.73,
+                      "Plan Rows": 31,
+                      "Plan Width": 4,
+                      "Plans": [
+                        {
+                          "Node Type": "Seq Scan",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Relation Name": "date_dim",
+                          "Alias": "date_dim_2",
+                          "Startup Cost": 0.00,
+                          "Total Cost": 2500.73,
+                          "Plan Rows": 31,
+                          "Plan Width": 4,
+                          "Filter": "((d_date >= '2000-08-06'::date) AND (d_date <= '2000-09-05'::date))"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Node Type": "Aggregate",
+          "Strategy": "Sorted",
+          "Partial Mode": "Simple",
+          "Parent Relationship": "InitPlan",
+          "Subplan Name": "CTE cr",
+          "Parallel Aware": false,
+          "Startup Cost": 7198.80,
+          "Total Cost": 7199.50,
+          "Plan Rows": 6,
+          "Plan Width": 68,
+          "Group Key": ["catalog_returns.cr_call_center_sk"],
+          "Plans": [
+            {
+              "Node Type": "Sort",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Startup Cost": 7198.80,
+              "Total Cost": 7198.95,
+              "Plan Rows": 61,
+              "Plan Width": 16,
+              "Sort Key": ["catalog_returns.cr_call_center_sk"],
+              "Plans": [
+                {
+                  "Node Type": "Hash Join",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Join Type": "Inner",
+                  "Startup Cost": 2501.12,
+                  "Total Cost": 7196.99,
+                  "Plan Rows": 61,
+                  "Plan Width": 16,
+                  "Inner Unique": true,
+                  "Hash Cond": "(catalog_returns.cr_returned_date_sk = date_dim_3.d_date_sk)",
+                  "Plans": [
+                    {
+                      "Node Type": "Seq Scan",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "Relation Name": "catalog_returns",
+                      "Alias": "catalog_returns",
+                      "Startup Cost": 0.00,
+                      "Total Cost": 4317.67,
+                      "Plan Rows": 144067,
+                      "Plan Width": 20
+                    },
+                    {
+                      "Node Type": "Hash",
+                      "Parent Relationship": "Inner",
+                      "Parallel Aware": false,
+                      "Startup Cost": 2500.73,
+                      "Total Cost": 2500.73,
+                      "Plan Rows": 31,
+                      "Plan Width": 4,
+                      "Plans": [
+                        {
+                          "Node Type": "Seq Scan",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Relation Name": "date_dim",
+                          "Alias": "date_dim_3",
+                          "Startup Cost": 0.00,
+                          "Total Cost": 2500.73,
+                          "Plan Rows": 31,
+                          "Plan Width": 4,
+                          "Filter": "((d_date >= '2000-08-06'::date) AND (d_date <= '2000-09-05'::date))"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Node Type": "Aggregate",
+          "Strategy": "Sorted",
+          "Partial Mode": "Simple",
+          "Parent Relationship": "InitPlan",
+          "Subplan Name": "CTE ws",
+          "Parallel Aware": false,
+          "Startup Cost": 2501.26,
+          "Total Cost": 30642.95,
+          "Plan Rows": 60,
+          "Plan Width": 68,
+          "Group Key": ["web_page.wp_web_page_sk"],
+          "Plans": [
+            {
+              "Node Type": "Nested Loop",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Join Type": "Inner",
+              "Startup Cost": 2501.26,
+              "Total Cost": 30639.76,
+              "Plan Rows": 305,
+              "Plan Width": 16,
+              "Inner Unique": false,
+              "Join Filter": "(web_sales.ws_web_page_sk = web_page.wp_web_page_sk)",
+              "Plans": [
+                {
+                  "Node Type": "Index Only Scan",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Scan Direction": "Forward",
+                  "Index Name": "web_page_pkey",
+                  "Relation Name": "web_page",
+                  "Alias": "web_page",
+                  "Startup Cost": 0.14,
+                  "Total Cost": 14.04,
+                  "Plan Rows": 60,
+                  "Plan Width": 4
+                },
+                {
+                  "Node Type": "Materialize",
+                  "Parent Relationship": "Inner",
+                  "Parallel Aware": false,
+                  "Startup Cost": 2501.12,
+                  "Total Cost": 30351.98,
+                  "Plan Rows": 305,
+                  "Plan Width": 16,
+                  "Plans": [
+                    {
+                      "Node Type": "Hash Join",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "Join Type": "Inner",
+                      "Startup Cost": 2501.12,
+                      "Total Cost": 30350.46,
+                      "Plan Rows": 305,
+                      "Plan Width": 16,
+                      "Inner Unique": true,
+                      "Hash Cond": "(web_sales.ws_sold_date_sk = date_dim_4.d_date_sk)",
+                      "Plans": [
+                        {
+                          "Node Type": "Seq Scan",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Relation Name": "web_sales",
+                          "Alias": "web_sales",
+                          "Startup Cost": 0.00,
+                          "Total Cost": 25960.84,
+                          "Plan Rows": 719384,
+                          "Plan Width": 20
+                        },
+                        {
+                          "Node Type": "Hash",
+                          "Parent Relationship": "Inner",
+                          "Parallel Aware": false,
+                          "Startup Cost": 2500.73,
+                          "Total Cost": 2500.73,
+                          "Plan Rows": 31,
+                          "Plan Width": 4,
+                          "Plans": [
+                            {
+                              "Node Type": "Seq Scan",
+                              "Parent Relationship": "Outer",
+                              "Parallel Aware": false,
+                              "Relation Name": "date_dim",
+                              "Alias": "date_dim_4",
+                              "Startup Cost": 0.00,
+                              "Total Cost": 2500.73,
+                              "Plan Rows": 31,
+                              "Plan Width": 4,
+                              "Filter": "((d_date >= '2000-08-06'::date) AND (d_date <= '2000-09-05'::date))"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Node Type": "Aggregate",
+          "Strategy": "Sorted",
+          "Partial Mode": "Simple",
+          "Parent Relationship": "InitPlan",
+          "Subplan Name": "CTE wr",
+          "Parallel Aware": false,
+          "Startup Cost": 2501.26,
+          "Total Cost": 4774.98,
+          "Plan Rows": 28,
+          "Plan Width": 68,
+          "Group Key": ["web_page_1.wp_web_page_sk"],
+          "Plans": [
+            {
+              "Node Type": "Nested Loop",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Join Type": "Inner",
+              "Startup Cost": 2501.26,
+              "Total Cost": 4774.35,
+              "Plan Rows": 28,
+              "Plan Width": 16,
+              "Inner Unique": false,
+              "Join Filter": "(web_returns.wr_web_page_sk = web_page_1.wp_web_page_sk)",
+              "Plans": [
+                {
+                  "Node Type": "Index Only Scan",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Scan Direction": "Forward",
+                  "Index Name": "web_page_pkey",
+                  "Relation Name": "web_page",
+                  "Alias": "web_page_1",
+                  "Startup Cost": 0.14,
+                  "Total Cost": 14.04,
+                  "Plan Rows": 60,
+                  "Plan Width": 4
+                },
+                {
+                  "Node Type": "Materialize",
+                  "Parent Relationship": "Inner",
+                  "Parallel Aware": false,
+                  "Startup Cost": 2501.12,
+                  "Total Cost": 4734.29,
+                  "Plan Rows": 29,
+                  "Plan Width": 16,
+                  "Plans": [
+                    {
+                      "Node Type": "Hash Join",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "Join Type": "Inner",
+                      "Startup Cost": 2501.12,
+                      "Total Cost": 4734.14,
+                      "Plan Rows": 29,
+                      "Plan Width": 16,
+                      "Inner Unique": true,
+                      "Hash Cond": "(web_returns.wr_returned_date_sk = date_dim_5.d_date_sk)",
+                      "Plans": [
+                        {
+                          "Node Type": "Seq Scan",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Relation Name": "web_returns",
+                          "Alias": "web_returns",
+                          "Startup Cost": 0.00,
+                          "Total Cost": 2044.63,
+                          "Plan Rows": 71763,
+                          "Plan Width": 20
+                        },
+                        {
+                          "Node Type": "Hash",
+                          "Parent Relationship": "Inner",
+                          "Parallel Aware": false,
+                          "Startup Cost": 2500.73,
+                          "Total Cost": 2500.73,
+                          "Plan Rows": 31,
+                          "Plan Width": 4,
+                          "Plans": [
+                            {
+                              "Node Type": "Seq Scan",
+                              "Parent Relationship": "Outer",
+                              "Parallel Aware": false,
+                              "Relation Name": "date_dim",
+                              "Alias": "date_dim_5",
+                              "Startup Cost": 0.00,
+                              "Total Cost": 2500.73,
+                              "Plan Rows": 31,
+                              "Plan Width": 4,
+                              "Filter": "((d_date >= '2000-08-06'::date) AND (d_date <= '2000-09-05'::date))"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Node Type": "Aggregate",
+          "Strategy": "Sorted",
+          "Partial Mode": "Simple",
+          "Parent Relationship": "Outer",
+          "Parallel Aware": false,
+          "Startup Cost": 9.85,
+          "Total Cost": 15.27,
+          "Plan Rows": 217,
+          "Plan Width": 132,
+          "Grouping Sets": [
+            {
+              "Group Keys": [
+                ["('store channel'::text)", "ss.s_store_sk"],
+                ["('store channel'::text)"],
+                []
+              ]
+            }
+          ],
+          "Plans": [
+            {
+              "Node Type": "Sort",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Startup Cost": 9.85,
+              "Total Cost": 10.12,
+              "Plan Rows": 108,
+              "Plan Width": 132,
+              "Sort Key": ["('store channel'::text)", "ss.s_store_sk"],
+              "Plans": [
+                {
+                  "Node Type": "Append",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Startup Cost": 0.39,
+                  "Total Cost": 6.20,
+                  "Plan Rows": 108,
+                  "Plan Width": 132,
+                  "Plans": [
+                    {
+                      "Node Type": "Hash Join",
+                      "Parent Relationship": "Member",
+                      "Parallel Aware": false,
+                      "Join Type": "Left",
+                      "Startup Cost": 0.39,
+                      "Total Cost": 0.83,
+                      "Plan Rows": 12,
+                      "Plan Width": 132,
+                      "Inner Unique": false,
+                      "Hash Cond": "(ss.s_store_sk = sr.s_store_sk)",
+                      "Plans": [
+                        {
+                          "Node Type": "CTE Scan",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "CTE Name": "ss",
+                          "Alias": "ss",
+                          "Startup Cost": 0.00,
+                          "Total Cost": 0.24,
+                          "Plan Rows": 12,
+                          "Plan Width": 68
+                        },
+                        {
+                          "Node Type": "Hash",
+                          "Parent Relationship": "Inner",
+                          "Parallel Aware": false,
+                          "Startup Cost": 0.24,
+                          "Total Cost": 0.24,
+                          "Plan Rows": 12,
+                          "Plan Width": 68,
+                          "Plans": [
+                            {
+                              "Node Type": "CTE Scan",
+                              "Parent Relationship": "Outer",
+                              "Parallel Aware": false,
+                              "CTE Name": "sr",
+                              "Alias": "sr",
+                              "Startup Cost": 0.00,
+                              "Total Cost": 0.24,
+                              "Plan Rows": 12,
+                              "Plan Width": 68
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "Node Type": "Nested Loop",
+                      "Parent Relationship": "Member",
+                      "Parallel Aware": false,
+                      "Join Type": "Inner",
+                      "Startup Cost": 0.00,
+                      "Total Cost": 0.99,
+                      "Plan Rows": 36,
+                      "Plan Width": 132,
+                      "Inner Unique": false,
+                      "Plans": [
+                        {
+                          "Node Type": "CTE Scan",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "CTE Name": "cs",
+                          "Alias": "cs",
+                          "Startup Cost": 0.00,
+                          "Total Cost": 0.12,
+                          "Plan Rows": 6,
+                          "Plan Width": 68
+                        },
+                        {
+                          "Node Type": "CTE Scan",
+                          "Parent Relationship": "Inner",
+                          "Parallel Aware": false,
+                          "CTE Name": "cr",
+                          "Alias": "cr",
+                          "Startup Cost": 0.00,
+                          "Total Cost": 0.12,
+                          "Plan Rows": 6,
+                          "Plan Width": 64
+                        }
+                      ]
+                    },
+                    {
+                      "Node Type": "Hash Join",
+                      "Parent Relationship": "Member",
+                      "Parallel Aware": false,
+                      "Join Type": "Left",
+                      "Startup Cost": 0.91,
+                      "Total Cost": 2.77,
+                      "Plan Rows": 60,
+                      "Plan Width": 132,
+                      "Inner Unique": false,
+                      "Hash Cond": "(ws.wp_web_page_sk = wr.wp_web_page_sk)",
+                      "Plans": [
+                        {
+                          "Node Type": "CTE Scan",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "CTE Name": "ws",
+                          "Alias": "ws",
+                          "Startup Cost": 0.00,
+                          "Total Cost": 1.20,
+                          "Plan Rows": 60,
+                          "Plan Width": 68
+                        },
+                        {
+                          "Node Type": "Hash",
+                          "Parent Relationship": "Inner",
+                          "Parallel Aware": false,
+                          "Startup Cost": 0.56,
+                          "Total Cost": 0.56,
+                          "Plan Rows": 28,
+                          "Plan Width": 68,
+                          "Plans": [
+                            {
+                              "Node Type": "CTE Scan",
+                              "Parent Relationship": "Outer",
+                              "Parallel Aware": false,
+                              "CTE Name": "wr",
+                              "Alias": "wr",
+                              "Startup Cost": 0.00,
+                              "Total Cost": 0.56,
+                              "Plan Rows": 28,
+                              "Plan Width": 68
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+]
+SET

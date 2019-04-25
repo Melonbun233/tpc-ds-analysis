@@ -1,0 +1,129 @@
+[
+  {
+    "Plan": {
+      "Node Type": "Limit",
+      "Parallel Aware": false,
+      "Startup Cost": 90925.59,
+      "Total Cost": 90925.64,
+      "Plan Rows": 21,
+      "Plan Width": 91,
+      "Plans": [
+        {
+          "Node Type": "Sort",
+          "Parent Relationship": "Outer",
+          "Parallel Aware": false,
+          "Startup Cost": 90925.59,
+          "Total Cost": 90925.64,
+          "Plan Rows": 21,
+          "Plan Width": 91,
+          "Sort Key": ["(sum(store_sales.ss_ext_sales_price)) DESC", "item.i_brand_id"],
+          "Plans": [
+            {
+              "Node Type": "Aggregate",
+              "Strategy": "Sorted",
+              "Partial Mode": "Simple",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Startup Cost": 90924.61,
+              "Total Cost": 90925.13,
+              "Plan Rows": 21,
+              "Plan Width": 91,
+              "Group Key": ["dt.d_year", "item.i_brand", "item.i_brand_id"],
+              "Plans": [
+                {
+                  "Node Type": "Sort",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Startup Cost": 90924.61,
+                  "Total Cost": 90924.66,
+                  "Plan Rows": 21,
+                  "Plan Width": 65,
+                  "Sort Key": ["item.i_brand", "item.i_brand_id"],
+                  "Plans": [
+                    {
+                      "Node Type": "Nested Loop",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "Join Type": "Inner",
+                      "Startup Cost": 2501.41,
+                      "Total Cost": 90924.14,
+                      "Plan Rows": 21,
+                      "Plan Width": 65,
+                      "Inner Unique": true,
+                      "Plans": [
+                        {
+                          "Node Type": "Hash Join",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Join Type": "Inner",
+                          "Startup Cost": 2501.12,
+                          "Total Cost": 90563.21,
+                          "Plan Rows": 1167,
+                          "Plan Width": 14,
+                          "Inner Unique": true,
+                          "Hash Cond": "(store_sales.ss_sold_date_sk = dt.d_date_sk)",
+                          "Plans": [
+                            {
+                              "Node Type": "Seq Scan",
+                              "Parent Relationship": "Outer",
+                              "Parallel Aware": false,
+                              "Relation Name": "store_sales",
+                              "Alias": "store_sales",
+                              "Startup Cost": 0.00,
+                              "Total Cost": 80500.49,
+                              "Plan Rows": 2880449,
+                              "Plan Width": 14
+                            },
+                            {
+                              "Node Type": "Hash",
+                              "Parent Relationship": "Inner",
+                              "Parallel Aware": false,
+                              "Startup Cost": 2500.73,
+                              "Total Cost": 2500.73,
+                              "Plan Rows": 31,
+                              "Plan Width": 8,
+                              "Plans": [
+                                {
+                                  "Node Type": "Seq Scan",
+                                  "Parent Relationship": "Outer",
+                                  "Parallel Aware": false,
+                                  "Relation Name": "date_dim",
+                                  "Alias": "dt",
+                                  "Startup Cost": 0.00,
+                                  "Total Cost": 2500.73,
+                                  "Plan Rows": 31,
+                                  "Plan Width": 8,
+                                  "Filter": "((d_moy = 12) AND (d_year = 2002))"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "Node Type": "Index Scan",
+                          "Parent Relationship": "Inner",
+                          "Parallel Aware": false,
+                          "Scan Direction": "Forward",
+                          "Index Name": "item_pkey",
+                          "Relation Name": "item",
+                          "Alias": "item",
+                          "Startup Cost": 0.29,
+                          "Total Cost": 0.31,
+                          "Plan Rows": 1,
+                          "Plan Width": 59,
+                          "Index Cond": "(i_item_sk = store_sales.ss_item_sk)",
+                          "Filter": "(i_manager_id = 1)"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+]
+SET

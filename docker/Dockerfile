@@ -13,3 +13,6 @@ WORKDIR tpcds-kit/tools
 RUN make OS=LINUX
 
 COPY load-data.sh /app/tpcds-kit/tools
+COPY query_analyze/ /app
+
+WORKDIR /app

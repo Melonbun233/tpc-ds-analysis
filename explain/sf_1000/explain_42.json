@@ -1,0 +1,127 @@
+[
+  {
+    "Plan": {
+      "Node Type": "Limit",
+      "Parallel Aware": false,
+      "Startup Cost": 90658.68,
+      "Total Cost": 90658.69,
+      "Plan Rows": 1,
+      "Plan Width": 246,
+      "Plans": [
+        {
+          "Node Type": "Sort",
+          "Parent Relationship": "Outer",
+          "Parallel Aware": false,
+          "Startup Cost": 90658.68,
+          "Total Cost": 90658.69,
+          "Plan Rows": 1,
+          "Plan Width": 246,
+          "Sort Key": ["store.s_store_name", "store.s_store_id", "(sum(CASE WHEN (date_dim.d_day_name = 'Sunday'::bpchar) THEN store_sales.ss_sales_price ELSE NULL::numeric END))", "(sum(CASE WHEN (date_dim.d_day_name = 'Monday'::bpchar) THEN store_sales.ss_sales_price ELSE NULL::numeric END))", "(sum(CASE WHEN (date_dim.d_day_name = 'Tuesday'::bpchar) THEN store_sales.ss_sales_price ELSE NULL::numeric END))", "(sum(CASE WHEN (date_dim.d_day_name = 'Wednesday'::bpchar) THEN store_sales.ss_sales_price ELSE NULL::numeric END))", "(sum(CASE WHEN (date_dim.d_day_name = 'Thursday'::bpchar) THEN store_sales.ss_sales_price ELSE NULL::numeric END))", "(sum(CASE WHEN (date_dim.d_day_name = 'Friday'::bpchar) THEN store_sales.ss_sales_price ELSE NULL::numeric END))", "(sum(CASE WHEN (date_dim.d_day_name = 'Saturday'::bpchar) THEN store_sales.ss_sales_price ELSE NULL::numeric END))"],
+          "Plans": [
+            {
+              "Node Type": "Aggregate",
+              "Strategy": "Sorted",
+              "Partial Mode": "Simple",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Startup Cost": 90612.28,
+              "Total Cost": 90658.67,
+              "Plan Rows": 1,
+              "Plan Width": 246,
+              "Group Key": ["store.s_store_name", "store.s_store_id"],
+              "Plans": [
+                {
+                  "Node Type": "Sort",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Startup Cost": 90612.28,
+                  "Total Cost": 90615.01,
+                  "Plan Rows": 1091,
+                  "Plan Width": 38,
+                  "Sort Key": ["store.s_store_name", "store.s_store_id"],
+                  "Plans": [
+                    {
+                      "Node Type": "Nested Loop",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "Join Type": "Inner",
+                      "Startup Cost": 2322.66,
+                      "Total Cost": 90557.23,
+                      "Plan Rows": 1091,
+                      "Plan Width": 38,
+                      "Inner Unique": false,
+                      "Join Filter": "(store_sales.ss_store_sk = store.s_store_sk)",
+                      "Plans": [
+                        {
+                          "Node Type": "Seq Scan",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Relation Name": "store",
+                          "Alias": "store",
+                          "Startup Cost": 0.00,
+                          "Total Cost": 1.15,
+                          "Plan Rows": 1,
+                          "Plan Width": 26,
+                          "Filter": "(s_gmt_offset = '-6'::numeric)"
+                        },
+                        {
+                          "Node Type": "Hash Join",
+                          "Parent Relationship": "Inner",
+                          "Parallel Aware": false,
+                          "Join Type": "Inner",
+                          "Startup Cost": 2322.66,
+                          "Total Cost": 90384.75,
+                          "Plan Rows": 13706,
+                          "Plan Width": 20,
+                          "Inner Unique": true,
+                          "Hash Cond": "(store_sales.ss_sold_date_sk = date_dim.d_date_sk)",
+                          "Plans": [
+                            {
+                              "Node Type": "Seq Scan",
+                              "Parent Relationship": "Outer",
+                              "Parallel Aware": false,
+                              "Relation Name": "store_sales",
+                              "Alias": "store_sales",
+                              "Startup Cost": 0.00,
+                              "Total Cost": 80500.49,
+                              "Plan Rows": 2880449,
+                              "Plan Width": 14
+                            },
+                            {
+                              "Node Type": "Hash",
+                              "Parent Relationship": "Inner",
+                              "Parallel Aware": false,
+                              "Startup Cost": 2318.11,
+                              "Total Cost": 2318.11,
+                              "Plan Rows": 364,
+                              "Plan Width": 14,
+                              "Plans": [
+                                {
+                                  "Node Type": "Seq Scan",
+                                  "Parent Relationship": "Outer",
+                                  "Parallel Aware": false,
+                                  "Relation Name": "date_dim",
+                                  "Alias": "date_dim",
+                                  "Startup Cost": 0.00,
+                                  "Total Cost": 2318.11,
+                                  "Plan Rows": 364,
+                                  "Plan Width": 14,
+                                  "Filter": "(d_year = 2000)"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+]
+SET
