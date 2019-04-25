@@ -1,3 +1,4 @@
+docker/postgres-data/
 tpcds-kit/
 .DS_Store
 *.pyc

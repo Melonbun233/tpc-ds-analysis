@@ -76,7 +76,8 @@ group by query_id
 --- filter stats for specific ops
 with filter_op as (
   select "Node Type" as op_name, *
-  from nodes where "Rows Removed by Filter" is not null or "Rows Removed by Join Filter" is not null
+  from nodes where ("Rows Removed by Filter" is not null or "Rows Removed by Join Filter" is not null)
+  and "Node Type"!='Hash Join' and "Node Type"!='Merge Join'
 ),
 filter_stats as (
   select
@@ -145,7 +146,8 @@ select * from filter_stats;
 -- filter stats for all filters
 with filter_op as (
   select "Node Type" as op_name, *
-  from nodes where "Rows Removed by Filter" is not null or "Rows Removed by Join Filter" is not null
+  from nodes where ("Rows Removed by Filter" is not null or "Rows Removed by Join Filter" is not null)
+  and "Node Type"!='Hash Join' and "Node Type"!='Merge Join'
 ),
 filter_stats as (
   select
@@ -177,5 +179,5 @@ filter_stats as (
 select * from filter_stats;
 
 
-select *
+select "Filter"
   from nodes where ("Rows Removed by Filter" is not null or "Rows Removed by Join Filter" is not null) and ("Filter" is not null)
