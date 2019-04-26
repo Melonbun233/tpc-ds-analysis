@@ -15,23 +15,25 @@ else
   psql -U postgres -w $db -f tpcds.sql
 
   echo "Generating data..."
-  mkdir data-$1
-  ./dsdgen -SCALE $1 -FORCE -VERBOSE -DIR data-$1
+  mkdir /var/lib/postgresql/data/tmp
+  mkdir /var/lib/postgresql/data/tmp/data-$1
+  ./dsdgen -SCALE $1 -FORCE -VERBOSE -DIR /var/lib/postgresql/data/tmp/data-$1
 
   echo "Loading data into the databse..."
   #temporarily store the data in the volume
-  mkdir /var/lib/postgresql/data/tmp
-  mkdir /var/lib/postgresql/data/tmp/data-$1
-  for i in `ls data-$1/*.dat`; do
+  
+  for i in `ls /var/lib/postgresql/data/tmp/data-$1/*.dat`; do
     table=${i/.dat/}
-    table=${table#*/}
+    table=${table#/var/lib/postgresql/data/tmp/data-$1/}
     echo "Loading $table..."
-    sed 's/|$//' $i > /var/lib/postgresql/data/tmp/$i
+    sed 's/|$//' $i > /var/lib/postgresql/data/tmp/$table.dat
     psql tpcds-$1 -U postgres -w -q -c "TRUNCATE $table"
-    psql tpcds-$1 -U postgres -w -c "\\copy $table FROM '/var/lib/postgresql/data/tmp/$i' CSV DELIMITER '|'"
+    psql tpcds-$1 -U postgres -w -c "\\copy $table FROM '/var/lib/postgresql/data/tmp/$table.dat' CSV DELIMITER '|'"
+    #clear tmp data
+    rm /var/lib/postgresql/data/tmp/$table.dat
   done
   #remove temp directory
-  rm -r /var/lib/postgresql/data/tmp
+  #rm -r /var/lib/postgresql/data/tmp
   echo "Data loaded into database $db"
 
 fi
