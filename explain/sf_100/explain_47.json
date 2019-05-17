@@ -1,0 +1,158 @@
+[
+  {
+    "Plan": {
+      "Node Type": "Aggregate",
+      "Strategy": "Plain",
+      "Partial Mode": "Simple",
+      "Parallel Aware": false,
+      "Startup Cost": 171003.15,
+      "Total Cost": 171003.16,
+      "Plan Rows": 1,
+      "Plan Width": 8,
+      "Plans": [
+        {
+          "Node Type": "Nested Loop",
+          "Parent Relationship": "Outer",
+          "Parallel Aware": false,
+          "Join Type": "Inner",
+          "Startup Cost": 2324.65,
+          "Total Cost": 171003.13,
+          "Plan Rows": 5,
+          "Plan Width": 4,
+          "Inner Unique": true,
+          "Plans": [
+            {
+              "Node Type": "Nested Loop",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Join Type": "Inner",
+              "Startup Cost": 2324.22,
+              "Total Cost": 170870.90,
+              "Plan Rows": 168,
+              "Plan Width": 14,
+              "Inner Unique": true,
+              "Plans": [
+                {
+                  "Node Type": "Hash Join",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Join Type": "Inner",
+                  "Startup Cost": 2323.93,
+                  "Total Cost": 170235.13,
+                  "Plan Rows": 1716,
+                  "Plan Width": 24,
+                  "Inner Unique": true,
+                  "Hash Cond": "(store_sales.ss_store_sk = store.s_store_sk)",
+                  "Plans": [
+                    {
+                      "Node Type": "Hash Join",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "Join Type": "Inner",
+                      "Startup Cost": 2322.66,
+                      "Total Cost": 170227.56,
+                      "Plan Rows": 1796,
+                      "Plan Width": 28,
+                      "Inner Unique": true,
+                      "Hash Cond": "(store_sales.ss_sold_date_sk = date_dim.d_date_sk)",
+                      "Plans": [
+                        {
+                          "Node Type": "Seq Scan",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Relation Name": "store_sales",
+                          "Alias": "store_sales",
+                          "Startup Cost": 0.00,
+                          "Total Cost": 166913.96,
+                          "Plan Rows": 377478,
+                          "Plan Width": 32,
+                          "Filter": "((((ss_sales_price >= 100.00) AND (ss_sales_price <= 150.00)) OR ((ss_sales_price >= 50.00) AND (ss_sales_price <= 100.00)) OR ((ss_sales_price >= 150.00) AND (ss_sales_price <= 200.00))) AND (((ss_net_profit >= '0'::numeric) AND (ss_net_profit <= '2000'::numeric)) OR ((ss_net_profit >= '150'::numeric) AND (ss_net_profit <= '3000'::numeric)) OR ((ss_net_profit >= '50'::numeric) AND (ss_net_profit <= '25000'::numeric))))"
+                        },
+                        {
+                          "Node Type": "Hash",
+                          "Parent Relationship": "Inner",
+                          "Parallel Aware": false,
+                          "Startup Cost": 2318.11,
+                          "Total Cost": 2318.11,
+                          "Plan Rows": 364,
+                          "Plan Width": 4,
+                          "Plans": [
+                            {
+                              "Node Type": "Seq Scan",
+                              "Parent Relationship": "Outer",
+                              "Parallel Aware": false,
+                              "Relation Name": "date_dim",
+                              "Alias": "date_dim",
+                              "Startup Cost": 0.00,
+                              "Total Cost": 2318.11,
+                              "Plan Rows": 364,
+                              "Plan Width": 4,
+                              "Filter": "(d_year = 1999)"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "Node Type": "Hash",
+                      "Parent Relationship": "Inner",
+                      "Parallel Aware": false,
+                      "Startup Cost": 1.12,
+                      "Total Cost": 1.12,
+                      "Plan Rows": 12,
+                      "Plan Width": 4,
+                      "Plans": [
+                        {
+                          "Node Type": "Seq Scan",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Relation Name": "store",
+                          "Alias": "store",
+                          "Startup Cost": 0.00,
+                          "Total Cost": 1.12,
+                          "Plan Rows": 12,
+                          "Plan Width": 4
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "Node Type": "Index Scan",
+                  "Parent Relationship": "Inner",
+                  "Parallel Aware": false,
+                  "Scan Direction": "Forward",
+                  "Index Name": "customer_address_pkey",
+                  "Relation Name": "customer_address",
+                  "Alias": "customer_address",
+                  "Startup Cost": 0.29,
+                  "Total Cost": 0.36,
+                  "Plan Rows": 1,
+                  "Plan Width": 7,
+                  "Index Cond": "(ca_address_sk = store_sales.ss_addr_sk)",
+                  "Filter": "(((ca_country)::text = 'United States'::text) AND ((ca_state = ANY ('{MT,VA,AL}'::bpchar[])) OR (ca_state = ANY ('{TX,ND,CO}'::bpchar[])) OR (ca_state = ANY ('{MO,MN,WV}'::bpchar[]))) AND (((ca_state = ANY ('{MT,VA,AL}'::bpchar[])) AND (store_sales.ss_net_profit >= '0'::numeric) AND (store_sales.ss_net_profit <= '2000'::numeric)) OR ((ca_state = ANY ('{TX,ND,CO}'::bpchar[])) AND (store_sales.ss_net_profit >= '150'::numeric) AND (store_sales.ss_net_profit <= '3000'::numeric)) OR ((ca_state = ANY ('{MO,MN,WV}'::bpchar[])) AND (store_sales.ss_net_profit >= '50'::numeric) AND (store_sales.ss_net_profit <= '25000'::numeric))))"
+                }
+              ]
+            },
+            {
+              "Node Type": "Index Scan",
+              "Parent Relationship": "Inner",
+              "Parallel Aware": false,
+              "Scan Direction": "Forward",
+              "Index Name": "customer_demographics_pkey",
+              "Relation Name": "customer_demographics",
+              "Alias": "customer_demographics",
+              "Startup Cost": 0.43,
+              "Total Cost": 0.78,
+              "Plan Rows": 1,
+              "Plan Width": 27,
+              "Index Cond": "(cd_demo_sk = store_sales.ss_cdemo_sk)",
+              "Filter": "((((cd_marital_status = 'W'::bpchar) AND (cd_education_status = 'College'::bpchar)) OR ((cd_marital_status = 'D'::bpchar) AND (cd_education_status = 'Unknown'::bpchar)) OR ((cd_marital_status = 'U'::bpchar) AND (cd_education_status = 'Advanced Degree'::bpchar))) AND (((cd_marital_status = 'W'::bpchar) AND (cd_education_status = 'College'::bpchar) AND (store_sales.ss_sales_price >= 100.00) AND (store_sales.ss_sales_price <= 150.00)) OR ((cd_marital_status = 'D'::bpchar) AND (cd_education_status = 'Unknown'::bpchar) AND (store_sales.ss_sales_price >= 50.00) AND (store_sales.ss_sales_price <= 100.00)) OR ((cd_marital_status = 'U'::bpchar) AND (cd_education_status = 'Advanced Degree'::bpchar) AND (store_sales.ss_sales_price >= 150.00) AND (store_sales.ss_sales_price <= 200.00))))"
+            }
+          ]
+        }
+      ]
+    }
+  }
+]
+SET

@@ -1,0 +1,408 @@
+[
+  {
+    "Plan": {
+      "Node Type": "Seq Scan",
+      "Parallel Aware": false,
+      "Relation Name": "reason",
+      "Alias": "reason",
+      "Startup Cost": 1444188.26,
+      "Total Cost": 1444189.71,
+      "Plan Rows": 1,
+      "Plan Width": 160,
+      "Filter": "(r_reason_sk = 1)",
+      "Plans": [
+        {
+          "Node Type": "Aggregate",
+          "Strategy": "Plain",
+          "Partial Mode": "Simple",
+          "Parent Relationship": "InitPlan",
+          "Subplan Name": "InitPlan 1 (returns $0)",
+          "Parallel Aware": false,
+          "Startup Cost": 96282.71,
+          "Total Cost": 96282.72,
+          "Plan Rows": 1,
+          "Plan Width": 8,
+          "Plans": [
+            {
+              "Node Type": "Seq Scan",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Relation Name": "store_sales",
+              "Alias": "store_sales",
+              "Startup Cost": 0.00,
+              "Total Cost": 94902.74,
+              "Plan Rows": 551990,
+              "Plan Width": 0,
+              "Filter": "((ss_quantity >= 1) AND (ss_quantity <= 20))"
+            }
+          ]
+        },
+        {
+          "Node Type": "Aggregate",
+          "Strategy": "Plain",
+          "Partial Mode": "Simple",
+          "Parent Relationship": "InitPlan",
+          "Subplan Name": "InitPlan 2 (returns $1)",
+          "Parallel Aware": false,
+          "Startup Cost": 96282.71,
+          "Total Cost": 96282.72,
+          "Plan Rows": 1,
+          "Plan Width": 32,
+          "Plans": [
+            {
+              "Node Type": "Seq Scan",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Relation Name": "store_sales",
+              "Alias": "store_sales_1",
+              "Startup Cost": 0.00,
+              "Total Cost": 94902.74,
+              "Plan Rows": 551990,
+              "Plan Width": 6,
+              "Filter": "((ss_quantity >= 1) AND (ss_quantity <= 20))"
+            }
+          ]
+        },
+        {
+          "Node Type": "Aggregate",
+          "Strategy": "Plain",
+          "Partial Mode": "Simple",
+          "Parent Relationship": "InitPlan",
+          "Subplan Name": "InitPlan 3 (returns $2)",
+          "Parallel Aware": false,
+          "Startup Cost": 96282.71,
+          "Total Cost": 96282.72,
+          "Plan Rows": 1,
+          "Plan Width": 32,
+          "Plans": [
+            {
+              "Node Type": "Seq Scan",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Relation Name": "store_sales",
+              "Alias": "store_sales_2",
+              "Startup Cost": 0.00,
+              "Total Cost": 94902.74,
+              "Plan Rows": 551990,
+              "Plan Width": 6,
+              "Filter": "((ss_quantity >= 1) AND (ss_quantity <= 20))"
+            }
+          ]
+        },
+        {
+          "Node Type": "Aggregate",
+          "Strategy": "Plain",
+          "Partial Mode": "Simple",
+          "Parent Relationship": "InitPlan",
+          "Subplan Name": "InitPlan 4 (returns $3)",
+          "Parallel Aware": false,
+          "Startup Cost": 96296.39,
+          "Total Cost": 96296.40,
+          "Plan Rows": 1,
+          "Plan Width": 8,
+          "Plans": [
+            {
+              "Node Type": "Seq Scan",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Relation Name": "store_sales",
+              "Alias": "store_sales_3",
+              "Startup Cost": 0.00,
+              "Total Cost": 94902.74,
+              "Plan Rows": 557463,
+              "Plan Width": 0,
+              "Filter": "((ss_quantity >= 21) AND (ss_quantity <= 40))"
+            }
+          ]
+        },
+        {
+          "Node Type": "Aggregate",
+          "Strategy": "Plain",
+          "Partial Mode": "Simple",
+          "Parent Relationship": "InitPlan",
+          "Subplan Name": "InitPlan 5 (returns $4)",
+          "Parallel Aware": false,
+          "Startup Cost": 96296.40,
+          "Total Cost": 96296.40,
+          "Plan Rows": 1,
+          "Plan Width": 32,
+          "Plans": [
+            {
+              "Node Type": "Seq Scan",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Relation Name": "store_sales",
+              "Alias": "store_sales_4",
+              "Startup Cost": 0.00,
+              "Total Cost": 94902.74,
+              "Plan Rows": 557463,
+              "Plan Width": 6,
+              "Filter": "((ss_quantity >= 21) AND (ss_quantity <= 40))"
+            }
+          ]
+        },
+        {
+          "Node Type": "Aggregate",
+          "Strategy": "Plain",
+          "Partial Mode": "Simple",
+          "Parent Relationship": "InitPlan",
+          "Subplan Name": "InitPlan 6 (returns $5)",
+          "Parallel Aware": false,
+          "Startup Cost": 96296.40,
+          "Total Cost": 96296.40,
+          "Plan Rows": 1,
+          "Plan Width": 32,
+          "Plans": [
+            {
+              "Node Type": "Seq Scan",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Relation Name": "store_sales",
+              "Alias": "store_sales_5",
+              "Startup Cost": 0.00,
+              "Total Cost": 94902.74,
+              "Plan Rows": 557463,
+              "Plan Width": 6,
+              "Filter": "((ss_quantity >= 21) AND (ss_quantity <= 40))"
+            }
+          ]
+        },
+        {
+          "Node Type": "Aggregate",
+          "Strategy": "Plain",
+          "Partial Mode": "Simple",
+          "Parent Relationship": "InitPlan",
+          "Subplan Name": "InitPlan 7 (returns $6)",
+          "Parallel Aware": false,
+          "Startup Cost": 96254.62,
+          "Total Cost": 96254.63,
+          "Plan Rows": 1,
+          "Plan Width": 8,
+          "Plans": [
+            {
+              "Node Type": "Seq Scan",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Relation Name": "store_sales",
+              "Alias": "store_sales_6",
+              "Startup Cost": 0.00,
+              "Total Cost": 94902.74,
+              "Plan Rows": 540756,
+              "Plan Width": 0,
+              "Filter": "((ss_quantity >= 41) AND (ss_quantity <= 60))"
+            }
+          ]
+        },
+        {
+          "Node Type": "Aggregate",
+          "Strategy": "Plain",
+          "Partial Mode": "Simple",
+          "Parent Relationship": "InitPlan",
+          "Subplan Name": "InitPlan 8 (returns $7)",
+          "Parallel Aware": false,
+          "Startup Cost": 96254.63,
+          "Total Cost": 96254.64,
+          "Plan Rows": 1,
+          "Plan Width": 32,
+          "Plans": [
+            {
+              "Node Type": "Seq Scan",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Relation Name": "store_sales",
+              "Alias": "store_sales_7",
+              "Startup Cost": 0.00,
+              "Total Cost": 94902.74,
+              "Plan Rows": 540756,
+              "Plan Width": 6,
+              "Filter": "((ss_quantity >= 41) AND (ss_quantity <= 60))"
+            }
+          ]
+        },
+        {
+          "Node Type": "Aggregate",
+          "Strategy": "Plain",
+          "Partial Mode": "Simple",
+          "Parent Relationship": "InitPlan",
+          "Subplan Name": "InitPlan 9 (returns $8)",
+          "Parallel Aware": false,
+          "Startup Cost": 96254.63,
+          "Total Cost": 96254.64,
+          "Plan Rows": 1,
+          "Plan Width": 32,
+          "Plans": [
+            {
+              "Node Type": "Seq Scan",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Relation Name": "store_sales",
+              "Alias": "store_sales_8",
+              "Startup Cost": 0.00,
+              "Total Cost": 94902.74,
+              "Plan Rows": 540756,
+              "Plan Width": 6,
+              "Filter": "((ss_quantity >= 41) AND (ss_quantity <= 60))"
+            }
+          ]
+        },
+        {
+          "Node Type": "Aggregate",
+          "Strategy": "Plain",
+          "Partial Mode": "Simple",
+          "Parent Relationship": "InitPlan",
+          "Subplan Name": "InitPlan 10 (returns $9)",
+          "Parallel Aware": false,
+          "Startup Cost": 96293.99,
+          "Total Cost": 96294.00,
+          "Plan Rows": 1,
+          "Plan Width": 8,
+          "Plans": [
+            {
+              "Node Type": "Seq Scan",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Relation Name": "store_sales",
+              "Alias": "store_sales_9",
+              "Startup Cost": 0.00,
+              "Total Cost": 94902.74,
+              "Plan Rows": 556503,
+              "Plan Width": 0,
+              "Filter": "((ss_quantity >= 61) AND (ss_quantity <= 80))"
+            }
+          ]
+        },
+        {
+          "Node Type": "Aggregate",
+          "Strategy": "Plain",
+          "Partial Mode": "Simple",
+          "Parent Relationship": "InitPlan",
+          "Subplan Name": "InitPlan 11 (returns $10)",
+          "Parallel Aware": false,
+          "Startup Cost": 96294.00,
+          "Total Cost": 96294.01,
+          "Plan Rows": 1,
+          "Plan Width": 32,
+          "Plans": [
+            {
+              "Node Type": "Seq Scan",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Relation Name": "store_sales",
+              "Alias": "store_sales_10",
+              "Startup Cost": 0.00,
+              "Total Cost": 94902.74,
+              "Plan Rows": 556503,
+              "Plan Width": 6,
+              "Filter": "((ss_quantity >= 61) AND (ss_quantity <= 80))"
+            }
+          ]
+        },
+        {
+          "Node Type": "Aggregate",
+          "Strategy": "Plain",
+          "Partial Mode": "Simple",
+          "Parent Relationship": "InitPlan",
+          "Subplan Name": "InitPlan 12 (returns $11)",
+          "Parallel Aware": false,
+          "Startup Cost": 96294.00,
+          "Total Cost": 96294.01,
+          "Plan Rows": 1,
+          "Plan Width": 32,
+          "Plans": [
+            {
+              "Node Type": "Seq Scan",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Relation Name": "store_sales",
+              "Alias": "store_sales_11",
+              "Startup Cost": 0.00,
+              "Total Cost": 94902.74,
+              "Plan Rows": 556503,
+              "Plan Width": 6,
+              "Filter": "((ss_quantity >= 61) AND (ss_quantity <= 80))"
+            }
+          ]
+        },
+        {
+          "Node Type": "Aggregate",
+          "Strategy": "Plain",
+          "Partial Mode": "Simple",
+          "Parent Relationship": "InitPlan",
+          "Subplan Name": "InitPlan 13 (returns $12)",
+          "Parallel Aware": false,
+          "Startup Cost": 96268.31,
+          "Total Cost": 96268.32,
+          "Plan Rows": 1,
+          "Plan Width": 8,
+          "Plans": [
+            {
+              "Node Type": "Seq Scan",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Relation Name": "store_sales",
+              "Alias": "store_sales_12",
+              "Startup Cost": 0.00,
+              "Total Cost": 94902.74,
+              "Plan Rows": 546229,
+              "Plan Width": 0,
+              "Filter": "((ss_quantity >= 81) AND (ss_quantity <= 100))"
+            }
+          ]
+        },
+        {
+          "Node Type": "Aggregate",
+          "Strategy": "Plain",
+          "Partial Mode": "Simple",
+          "Parent Relationship": "InitPlan",
+          "Subplan Name": "InitPlan 14 (returns $13)",
+          "Parallel Aware": false,
+          "Startup Cost": 96268.31,
+          "Total Cost": 96268.32,
+          "Plan Rows": 1,
+          "Plan Width": 32,
+          "Plans": [
+            {
+              "Node Type": "Seq Scan",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Relation Name": "store_sales",
+              "Alias": "store_sales_13",
+              "Startup Cost": 0.00,
+              "Total Cost": 94902.74,
+              "Plan Rows": 546229,
+              "Plan Width": 6,
+              "Filter": "((ss_quantity >= 81) AND (ss_quantity <= 100))"
+            }
+          ]
+        },
+        {
+          "Node Type": "Aggregate",
+          "Strategy": "Plain",
+          "Partial Mode": "Simple",
+          "Parent Relationship": "InitPlan",
+          "Subplan Name": "InitPlan 15 (returns $14)",
+          "Parallel Aware": false,
+          "Startup Cost": 96268.31,
+          "Total Cost": 96268.32,
+          "Plan Rows": 1,
+          "Plan Width": 32,
+          "Plans": [
+            {
+              "Node Type": "Seq Scan",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Relation Name": "store_sales",
+              "Alias": "store_sales_14",
+              "Startup Cost": 0.00,
+              "Total Cost": 94902.74,
+              "Plan Rows": 546229,
+              "Plan Width": 6,
+              "Filter": "((ss_quantity >= 81) AND (ss_quantity <= 100))"
+            }
+          ]
+        }
+      ]
+    }
+  }
+]
+SET

@@ -1,0 +1,147 @@
+[
+  {
+    "Plan": {
+      "Node Type": "Limit",
+      "Parallel Aware": false,
+      "Startup Cost": 232435.30,
+      "Total Cost": 232435.55,
+      "Plan Rows": 100,
+      "Plan Width": 236,
+      "Plans": [
+        {
+          "Node Type": "Sort",
+          "Parent Relationship": "Outer",
+          "Parallel Aware": false,
+          "Startup Cost": 232435.30,
+          "Total Cost": 232614.94,
+          "Plan Rows": 71857,
+          "Plan Width": 236,
+          "Sort Key": ["(avg(inventory.inv_quantity_on_hand))", "item.i_product_name", "item.i_brand", "item.i_class", "item.i_category"],
+          "Plans": [
+            {
+              "Node Type": "Aggregate",
+              "Strategy": "Sorted",
+              "Partial Mode": "Simple",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Startup Cost": 227917.70,
+              "Total Cost": 229688.97,
+              "Plan Rows": 71857,
+              "Plan Width": 236,
+              "Grouping Sets": [
+                {
+                  "Group Keys": [
+                    ["item.i_product_name", "item.i_brand", "item.i_class", "item.i_category"],
+                    ["item.i_product_name", "item.i_brand", "item.i_class"],
+                    ["item.i_product_name", "item.i_brand"],
+                    ["item.i_product_name"],
+                    []
+                  ]
+                }
+              ],
+              "Plans": [
+                {
+                  "Node Type": "Sort",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Startup Cost": 227917.70,
+                  "Total Cost": 228063.21,
+                  "Plan Rows": 58204,
+                  "Plan Width": 208,
+                  "Sort Key": ["item.i_product_name", "item.i_brand", "item.i_class", "item.i_category"],
+                  "Plans": [
+                    {
+                      "Node Type": "Hash Join",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "Join Type": "Inner",
+                      "Startup Cost": 4650.26,
+                      "Total Cost": 217539.69,
+                      "Plan Rows": 58204,
+                      "Plan Width": 208,
+                      "Inner Unique": true,
+                      "Hash Cond": "(inventory.inv_item_sk = item.i_item_sk)",
+                      "Plans": [
+                        {
+                          "Node Type": "Hash Join",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Join Type": "Inner",
+                          "Startup Cost": 2505.26,
+                          "Total Cost": 214275.88,
+                          "Plan Rows": 58204,
+                          "Plan Width": 8,
+                          "Inner Unique": true,
+                          "Hash Cond": "(inventory.inv_date_sk = date_dim.d_date_sk)",
+                          "Plans": [
+                            {
+                              "Node Type": "Seq Scan",
+                              "Parent Relationship": "Outer",
+                              "Parallel Aware": false,
+                              "Relation Name": "inventory",
+                              "Alias": "inventory",
+                              "Startup Cost": 0.00,
+                              "Total Cost": 180937.95,
+                              "Plan Rows": 11745095,
+                              "Plan Width": 12
+                            },
+                            {
+                              "Node Type": "Hash",
+                              "Parent Relationship": "Inner",
+                              "Parallel Aware": false,
+                              "Startup Cost": 2500.73,
+                              "Total Cost": 2500.73,
+                              "Plan Rows": 362,
+                              "Plan Width": 4,
+                              "Plans": [
+                                {
+                                  "Node Type": "Seq Scan",
+                                  "Parent Relationship": "Outer",
+                                  "Parallel Aware": false,
+                                  "Relation Name": "date_dim",
+                                  "Alias": "date_dim",
+                                  "Startup Cost": 0.00,
+                                  "Total Cost": 2500.73,
+                                  "Plan Rows": 362,
+                                  "Plan Width": 4,
+                                  "Filter": "((d_month_seq >= 1214) AND (d_month_seq <= 1225))"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "Node Type": "Hash",
+                          "Parent Relationship": "Inner",
+                          "Parallel Aware": false,
+                          "Startup Cost": 1410.00,
+                          "Total Cost": 1410.00,
+                          "Plan Rows": 18000,
+                          "Plan Width": 208,
+                          "Plans": [
+                            {
+                              "Node Type": "Seq Scan",
+                              "Parent Relationship": "Outer",
+                              "Parallel Aware": false,
+                              "Relation Name": "item",
+                              "Alias": "item",
+                              "Startup Cost": 0.00,
+                              "Total Cost": 1410.00,
+                              "Plan Rows": 18000,
+                              "Plan Width": 208
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+]
+SET

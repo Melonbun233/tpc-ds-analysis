@@ -1,0 +1,212 @@
+[
+  {
+    "Plan": {
+      "Node Type": "Limit",
+      "Parallel Aware": false,
+      "Startup Cost": 14830.74,
+      "Total Cost": 14830.79,
+      "Plan Rows": 23,
+      "Plan Width": 49,
+      "Plans": [
+        {
+          "Node Type": "Sort",
+          "Parent Relationship": "Outer",
+          "Parallel Aware": false,
+          "Startup Cost": 14830.74,
+          "Total Cost": 14830.79,
+          "Plan Rows": 23,
+          "Plan Width": 49,
+          "Sort Key": ["customer.c_customer_id"],
+          "Plans": [
+            {
+              "Node Type": "Nested Loop",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Join Type": "Inner",
+              "Startup Cost": 5925.84,
+              "Total Cost": 14830.22,
+              "Plan Rows": 23,
+              "Plan Width": 49,
+              "Inner Unique": true,
+              "Join Filter": "(customer.c_current_cdemo_sk = customer_demographics.cd_demo_sk)",
+              "Plans": [
+                {
+                  "Node Type": "Hash Join",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Join Type": "Inner",
+                  "Startup Cost": 5925.41,
+                  "Total Cost": 14683.95,
+                  "Plan Rows": 175,
+                  "Plan Width": 77,
+                  "Inner Unique": false,
+                  "Hash Cond": "(customer.c_current_hdemo_sk = household_demographics.hd_demo_sk)",
+                  "Plans": [
+                    {
+                      "Node Type": "Hash Join",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "Join Type": "Inner",
+                      "Startup Cost": 5758.16,
+                      "Total Cost": 14511.55,
+                      "Plan Rows": 907,
+                      "Plan Width": 81,
+                      "Inner Unique": false,
+                      "Hash Cond": "(store_returns.sr_cdemo_sk = customer.c_current_cdemo_sk)",
+                      "Plans": [
+                        {
+                          "Node Type": "Seq Scan",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Relation Name": "store_returns",
+                          "Alias": "store_returns",
+                          "Startup Cost": 0.00,
+                          "Total Cost": 7666.14,
+                          "Plan Rows": 287514,
+                          "Plan Width": 4
+                        },
+                        {
+                          "Node Type": "Hash",
+                          "Parent Relationship": "Inner",
+                          "Parallel Aware": false,
+                          "Startup Cost": 5747.73,
+                          "Total Cost": 5747.73,
+                          "Plan Rows": 834,
+                          "Plan Width": 77,
+                          "Plans": [
+                            {
+                              "Node Type": "Hash Join",
+                              "Parent Relationship": "Outer",
+                              "Parallel Aware": false,
+                              "Join Type": "Inner",
+                              "Startup Cost": 1717.21,
+                              "Total Cost": 5747.73,
+                              "Plan Rows": 834,
+                              "Plan Width": 77,
+                              "Inner Unique": true,
+                              "Hash Cond": "(customer.c_current_addr_sk = customer_address.ca_address_sk)",
+                              "Plans": [
+                                {
+                                  "Node Type": "Seq Scan",
+                                  "Parent Relationship": "Outer",
+                                  "Parallel Aware": false,
+                                  "Relation Name": "customer",
+                                  "Alias": "customer",
+                                  "Startup Cost": 0.00,
+                                  "Total Cost": 3768.00,
+                                  "Plan Rows": 100000,
+                                  "Plan Width": 81
+                                },
+                                {
+                                  "Node Type": "Hash",
+                                  "Parent Relationship": "Inner",
+                                  "Parallel Aware": false,
+                                  "Startup Cost": 1712.00,
+                                  "Total Cost": 1712.00,
+                                  "Plan Rows": 417,
+                                  "Plan Width": 4,
+                                  "Plans": [
+                                    {
+                                      "Node Type": "Seq Scan",
+                                      "Parent Relationship": "Outer",
+                                      "Parallel Aware": false,
+                                      "Relation Name": "customer_address",
+                                      "Alias": "customer_address",
+                                      "Startup Cost": 0.00,
+                                      "Total Cost": 1712.00,
+                                      "Plan Rows": 417,
+                                      "Plan Width": 4,
+                                      "Filter": "((ca_city)::text = 'Crossroads'::text)"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "Node Type": "Hash",
+                      "Parent Relationship": "Inner",
+                      "Parallel Aware": false,
+                      "Startup Cost": 149.25,
+                      "Total Cost": 149.25,
+                      "Plan Rows": 1440,
+                      "Plan Width": 4,
+                      "Plans": [
+                        {
+                          "Node Type": "Hash Join",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Join Type": "Inner",
+                          "Startup Cost": 1.35,
+                          "Total Cost": 149.25,
+                          "Plan Rows": 1440,
+                          "Plan Width": 4,
+                          "Inner Unique": true,
+                          "Hash Cond": "(household_demographics.hd_income_band_sk = income_band.ib_income_band_sk)",
+                          "Plans": [
+                            {
+                              "Node Type": "Seq Scan",
+                              "Parent Relationship": "Outer",
+                              "Parallel Aware": false,
+                              "Relation Name": "household_demographics",
+                              "Alias": "household_demographics",
+                              "Startup Cost": 0.00,
+                              "Total Cost": 125.00,
+                              "Plan Rows": 7200,
+                              "Plan Width": 8
+                            },
+                            {
+                              "Node Type": "Hash",
+                              "Parent Relationship": "Inner",
+                              "Parallel Aware": false,
+                              "Startup Cost": 1.30,
+                              "Total Cost": 1.30,
+                              "Plan Rows": 4,
+                              "Plan Width": 4,
+                              "Plans": [
+                                {
+                                  "Node Type": "Seq Scan",
+                                  "Parent Relationship": "Outer",
+                                  "Parallel Aware": false,
+                                  "Relation Name": "income_band",
+                                  "Alias": "income_band",
+                                  "Startup Cost": 0.00,
+                                  "Total Cost": 1.30,
+                                  "Plan Rows": 4,
+                                  "Plan Width": 4,
+                                  "Filter": "((ib_lower_bound >= 875) AND (ib_upper_bound <= 50875))"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "Node Type": "Index Only Scan",
+                  "Parent Relationship": "Inner",
+                  "Parallel Aware": false,
+                  "Scan Direction": "Forward",
+                  "Index Name": "customer_demographics_pkey",
+                  "Relation Name": "customer_demographics",
+                  "Alias": "customer_demographics",
+                  "Startup Cost": 0.43,
+                  "Total Cost": 0.82,
+                  "Plan Rows": 1,
+                  "Plan Width": 4,
+                  "Index Cond": "(cd_demo_sk = store_returns.sr_cdemo_sk)"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+]
+SET

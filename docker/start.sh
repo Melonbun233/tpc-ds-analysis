@@ -1,7 +1,7 @@
 #!/bin/bash
 #start the container
-volumePath=/mnt/scratch3/henry/db
-#volumePath=/Users/melonbun/workspace/tpc-ds/docker/postgres-data
+#volumePath=/mnt/scratch3/henry/db
+volumePath=/Users/melonbun/workspace/tpc-ds/docker/postgres-data
 port=9876
 
 if [ $# -eq 1 ]

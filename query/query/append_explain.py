@@ -2,7 +2,7 @@
 # Save the modified file in to the folder ../query_explain
 # 
 
-sf=1000;
+sf=100;
 
 for i in range(99):
 	old = open("queries_{sf}/query_{num}.sql".format(num = i, sf = sf), "r");
@@ -11,6 +11,7 @@ for i in range(99):
 
 	new.write("SET max_parallel_workers_per_gather TO 0;\n");
 
+	#new.write("\\o ../../../explain/sf_{sf}/explain_{num}.json\n".format(num = i, sf = sf));
 	new.write("\\o /var/lib/postgresql/data/explain/sf_{sf}/explain_{num}.json\n".format(num = i, sf = sf));
 	new.write("EXPLAIN (FORMAT JSON)\n"); 
 	for line in lines:

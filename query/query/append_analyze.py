@@ -1,7 +1,7 @@
 #append EXPLAIN (FORMAT JSON, ANALYZE) to all queries at their beginnings
 # Save the modified file in to the folder ../query_explain
 
-sf = 1;
+sf = 1000;
 
 for i in range(99):
 	old = open("queries_{sf}/query_{num}.sql".format(num = i, sf = sf), "r");
